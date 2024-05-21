@@ -1,0 +1,17 @@
+# if you want to include nested docker-compose.override.yaml files
+# docker compose -f ./docker-compose.yaml -f ./two/docker-compose.override.yaml -f ./docker-compose.override.yaml up
+
+include:
+  - ./nginx/docker-compose.yaml
+  - ./api/docker-compose.yaml
+  - ./zitadel/docker-compose.yaml
+
+services:
+  cleanup-myconfs:
+    image: alpine:latest
+    command: sh -c "rm -rf /data/*"
+    volumes:
+      - myconfs:/data
+
+volumes:
+  myconfs:

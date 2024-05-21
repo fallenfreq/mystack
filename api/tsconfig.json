@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "outDir": "dist",
+    "strict": true,
+    "esModuleInterop": true,
+    "incremental": true,
+    "tsBuildInfoFile": ".tsbuildinfo",
+    // will error if you have not checked a key has a value
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    // type import will be removed from js
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    // Generate d.ts files
+    "declaration": true,
+    // needed for drizzle orm to build
+    "skipLibCheck": true
+    // resolved relative to the location of the symbolic link file, rather than relative to the path that the symbolic link resolves to.
+    // "preserveSymlinks": true
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "drizzle.config.ts"]
+  // "watchOptions": {
+  // "synchronousWatchDirectory": true,
+  // "excludeDirectories": [],
+  // "excludeFiles": []
+  // }
+}

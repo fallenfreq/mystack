@@ -1,0 +1,38 @@
+# All possible options and their defaults: https://github.com/zitadel/zitadel/blob/main/cmd/defaults.yaml
+Log:
+  Level: 'info'
+
+# Make ZITADEL accessible over HTTP, not HTTPS
+ExternalSecure: true
+TLS:
+  # If enabled, ZITADEL will serve all traffic over TLS (HTTPS and gRPC)
+  # you must then also provide a private key and certificate to be used for the connection
+  # either directly or by a path to the corresponding file
+  Enabled: false # ZITADEL_TLS_ENABLED
+
+# If not using the docker compose example, adjust these values for connecting ZITADEL to your PostgreSQL
+Database:
+  cockroach:
+    Host: cockroach-db
+    User:
+      SSL:
+        Mode: 'verify-full' # ZITADEL_DATABASE_COCKROACH_USER_SSL_MODE
+        RootCert: '/crdb-certs/ca.crt' # ZITADEL_DATABASE_COCKROACH_USER_SSL_ROOTCERT
+        Cert: '/crdb-certs/client.zitadel_user.crt' # ZITADEL_DATABASE_COCKROACH_USER_SSL_CERT
+        Key: '/crdb-certs/client.zitadel_user.key' # ZITADEL_DATABASE_COCKROACH_USER_SSL_KEY
+    Admin:
+      SSL:
+        Mode: 'verify-full' # ZITADEL_DATABASE_COCKROACH_ADMIN_SSL_MODE
+        RootCert: '/crdb-certs/ca.crt' # ZITADEL_DATABASE_COCKROACH_ADMIN_SSL_ROOTCERT
+        Cert: '/crdb-certs/client.root.crt' # ZITADEL_DATABASE_COCKROACH_ADMIN_SSL_CERT
+        Key: '/crdb-certs/client.root.key' # ZITADEL_DATABASE_COCKROACH_ADMIN_SSL_KEY
+  # postgres:
+  #   Host: 'db'
+  #   Port: 5432
+  #   Database: zitadel
+  #   User:
+  #     SSL:
+  #       Mode: 'disable'
+  #   Admin:
+  #     SSL:
+  #       Mode: 'disable'

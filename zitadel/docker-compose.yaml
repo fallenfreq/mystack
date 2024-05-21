@@ -1,0 +1,130 @@
+# version: "3.8"
+services:
+  zitadel-external-tls:
+    extends:
+      service: zitadel-init
+    command: start-from-setup --config /zitadel-config.yaml --config /zitadel-secrets.yaml --masterkeyFromEnv
+    environment:
+      - ZITADEL_EXTERNALPORT=$ZITADEL_EXTERNALPORT # default internal port 8080 but nginx is using 443
+      - ZITADEL_FIRSTINSTANCE_ORG_HUMAN_USERNAME=$ZITADEL_FIRSTINSTANCE_ORG_HUMAN_USERNAME
+      - ZITADEL_FIRSTINSTANCE_ORG_HUMAN_PASSWORD=$ZITADEL_FIRSTINSTANCE_ORG_HUMAN_PASSWORD
+      - ZITADEL_MASTERKEY=$ZITADEL_MASTERKEY
+    networks:
+      - zitadel
+    volumes:
+      - ./zitadel-config.yaml:/zitadel-config.yaml:ro
+      - ./zitadel-secrets.yaml:/zitadel-secrets.yaml:ro
+      - zitadel-certs:/crdb-certs:ro
+    depends_on:
+      zitadel-init:
+        condition: service_completed_successfully
+      cockroach-db:
+        condition: service_healthy
+    # doesn't seem to have any binaries to run a test
+    # healthcheck:
+    #   test: ["CMD", "curl",  "-f", "-k", "http://localhost/debug/healthz"]
+    #   interval: '10s'
+    #   timeout: '5s'
+    #   retries: 5
+    #   start_period: '20s'
+
+  zitadel-init:
+    # user: "$UID" # the user key is used to specify the user or user group that the container process should run as when the container starts
+    image: ${ZITADEL_IMAGE:-ghcr.io/zitadel/zitadel:latest} # Use var or deafault if not set
+    # ZITADEL uses a different configuration file for database initialization steps. Use the --steps flag of the zitadel binary to provide this configuration file. Also, you can use the environment variables listed in the steps.yaml.
+    # this only works when init is not split. cant pass --steps to init so using env's instead
+    command: init --config /zitadel-config.yaml --config /zitadel-secrets.yaml
+    depends_on:
+      cockroach-db:
+        condition: service_healthy
+    environment:
+      # Using an external domain other than localhost proofs, that the proxy configuration works.
+      # If ZITADEL can't resolve a requests original host to this domain,
+      # it will return a 404 Instance not found error.
+      # - ZITADEL_EXTERNALDOMAIN=127.0.0.1.sslip.io
+
+      # In case something doesn't work as expected,
+      # it can be handy to be able to read the access logs.
+      - ZITADEL_LOGSTORE_ACCESS_STDOUT_ENABLED=true
+      # For convenience, ZITADEL should not ask to change the initial admin users password.
+      - ZITADEL_FIRSTINSTANCE_ORG_HUMAN_PASSWORDCHANGEREQUIRED=false
+    volumes:
+      - ./zitadel-config.yaml:/zitadel-config.yaml:ro
+      - ./zitadel-secrets.yaml:/zitadel-secrets.yaml:ro
+      # - ./zitadel-init-steps.yaml:/zitadel-init-steps.yaml:ro
+      - zitadel-certs:/crdb-certs:ro
+    networks:
+      - zitadel
+    healthcheck:
+      test: ['CMD', '/app/zitadel', 'ready']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  certs:
+    image: cockroachdb/cockroach:latest
+    entrypoint: ['/bin/bash', '-c']
+    # https://www.cockroachlabs.com/docs/stable/cockroach-cert
+    command: [/generate-certs.sh]
+    environment:
+      - ZITADEL_EXTERNALDOMAIN=$ZITADEL_EXTERNALDOMAIN
+      - MY_ZITADEL_EXTERNALIP=$MY_ZITADEL_EXTERNALIP
+    volumes:
+      - ./generate-certs.sh:/generate-certs.sh
+      - certs:/certs:rw
+      - zitadel-certs:/zitadel-certs:rw
+      - ../certs:/ui-certs
+
+  cockroach-db:
+    networks:
+      - zitadel
+    image: cockroachdb/cockroach:latest
+    command: start-single-node --advertise-addr cockroach-db
+    healthcheck:
+      test:
+        [
+          'CMD',
+          'curl',
+          '-f',
+          'http://${ZITADEL_EXTERNALDOMAIN}:${MY_COCKROACH_PORT}/health?ready=1'
+        ]
+      interval: 10s
+      timeout: 30s
+      retries: 5
+      start_period: 20s
+    ports:
+      - ${MY_COCKROACH_EXTERNALPORT}:8080
+      # - 26257:26257
+    volumes:
+      - certs:/cockroach/certs:rw
+      - data:/cockroach/cockroach-data:rw
+    depends_on:
+      certs:
+        condition: service_completed_successfully
+
+  proxy-external-tls:
+    image: nginx:mainline-alpine
+    volumes:
+      - ./conf.d:/etc/nginx/conf.d
+      - ../certs:/etc/nginx/ssl
+      # not using local-myconfs and place-confs.sh as its just proxying zitadel atm
+      - ./local-myconfs:/etc/nginx/local-myconfs
+    ports:
+      - $ZITADEL_EXTERNALPORT:443
+    networks:
+      - zitadel
+    depends_on:
+      zitadel-external-tls:
+        # condition: service_healthy
+        condition: service_started
+
+networks:
+  zitadel:
+
+# These are here to stop unnamed volumes and to pass the certs to cockroach-db
+volumes:
+  data:
+  certs:
+  zitadel-certs:
+  ui-certs:
