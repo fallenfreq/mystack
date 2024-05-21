@@ -1,4 +1,4 @@
-The server module needs to be published so this can be used by other people and the docker build ctx can stay at the root of the monorepo.
+The server module needs to be published so this can be used by other people and the docker build context can stay at the root of the monorepo.
 
 Tech Stack Monorepo using Typescript, Vue3, Vite, Zitadel, tRPC, Drizzle, docker, nginx
 
