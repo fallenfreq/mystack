@@ -1,0 +1,8 @@
+privkey.key
+fullchain.pem
+devca.key
+devcaa.pem
+dev.crt
+dev.csr
+ca_generation.log
+certificate_generation.log

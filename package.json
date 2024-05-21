@@ -1,0 +1,39 @@
+{
+  "name": "vue-app",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "docker:up:zitadel": "pnpm --filter @vue-app/zitadel docker:up",
+    "dev": "pnpm --filter @vue-app/* --parallel dev",
+    "build": "pnpm --filter @vue-app/* --parallel build",
+    "preview": "pnpm --filter @vue-app/* --parallel preview",
+    "dev:client": "pnpm --filter @vue-app/client dev",
+    "dev:api": "pnpm --filter @vue-app/api dev",
+    "build:client": "pnpm --filter @vue-app/client build",
+    "build:api": "pnpm --filter @vue-app/api build",
+    "preview:client": "pnpm --filter @vue-app/client preview",
+    "start:api": "pnpm --filter @vue-app/api start",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "format": "prettier --write src/",
+    "migrate:api": "pnpm --filter @vue-app/api migrate",
+    "migrate:push:api": "pnpm --filter @vue-app/api migrate:push",
+    "db:api": "pnpm --filter @vue-app/api db"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "superjson": "2.2.1"
+  },
+  "devDependencies": {
+    "@rushstack/eslint-patch": "^1.8.0",
+    "@tsconfig/node20": "^20.1.4",
+    "@types/lodash": "^4.17.0",
+    "@types/node": "^20.12.5",
+    "eslint": "^8.57.0",
+    "eslint-plugin-vue": "^9.23.0",
+    "npm-run-all2": "^6.1.2",
+    "prettier": "^3.2.5",
+    "typescript": "~5.4.0"
+  },
+  "packageManager": "pnpm@9.1.1+sha256.9551e803dcb7a1839fdf5416153a844060c7bce013218ce823410532504ac10b"
+}

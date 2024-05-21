@@ -1,0 +1,27 @@
+# this is only needed when firewall stops dns on nas
+# localhost is just a placeholder - it cant be overridden 
+x-hosts: &hosts
+  # - "${HOST}:192.168.69.151"
+  - localhost:127.0.0.1
+
+services:
+  api:
+    extra_hosts: *hosts
+    init: true
+    build:
+      context: ../../
+      dockerfile: ./vue-app/api/Dockerfile
+    env_file: .env
+
+  # add configs to volume
+  api-confs:
+    image: nginx
+    entrypoint: ['/bin/bash', '-c']
+    command: [/place-confs.sh]
+    volumes:
+      - ../place-confs.sh:/place-confs.sh
+      - ./local-myconfs:/etc/nginx/local-myconfs
+      - myconfs:/etc/nginx/myconfs
+
+volumes:
+  myconfs:

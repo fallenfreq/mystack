@@ -1,0 +1,11 @@
+services:
+  nginx:
+    depends_on:
+      api:
+        condition: service_started
+      api-confs:
+        condition: service_completed_successfully
+  api:
+    depends_on:
+      cleanup-myconfs:
+        condition: service_completed_successfully

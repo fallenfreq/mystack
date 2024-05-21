@@ -1,0 +1,54 @@
+{
+  "name": "@vue-app/api",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "main": "./dist/src/app.js",
+  "exports": {
+    ".": {
+      "import": "./dist/src/app.js"
+    },
+    "./appRouter": {
+      "import": "./dist/src/routes/appRouter.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "db": "docker compose -f ../nginx/docker-compose.yaml up pg",
+    "start": "node --experimental-json-modules --experimental-import-meta-resolve --trace-warnings -r dotenv/config 'dist/src/app.js'",
+    "preview": "pnpm --filter @vue-app/api start",
+    "dev": "tsc -w & pnpm start",
+    "build": "tsc",
+    "migrate": "pnpm drizzle-kit generate:pg",
+    "migrate:push": "node -r dotenv/config dist/src/config/migrate.js"
+  },
+  "dependencies": {
+    "@trpc/server": "11.0.0-rc.373",
+    "@types/node": "^20.1.4",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "drizzle-orm": "^0.30.9",
+    "jsonwebtoken": "^9.0.0",
+    "postgres": "^3.4.4",
+    "server": "../../localmods/server",
+    "zod": "^3.23.5"
+  },
+  "nodemonConfig": {
+    "delay": "400",
+    "verbose": false,
+    "ignore": [],
+    "watch": [
+      ".",
+      "../../localmods"
+    ],
+    "ext": "js,cjs,json"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/cors": "^2.8.13",
+    "drizzle-kit": "^0.20.17"
+  }
+}

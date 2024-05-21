@@ -1,0 +1,12 @@
+# All possible options and their defaults: https://github.com/zitadel/zitadel/blob/main/cmd/setup/steps.yaml
+# This can't be passed with --steps to init so im using the env's instead in the docker compose file
+
+# *********** THIS IS NOT IN USE ***********
+
+FirstInstance:
+  Org:
+    Human:
+      # example login loginname root@zitadel.localhost
+      # this is the login name that works but not sure why. zitadel-admin@zitadel.127.0.0.1.sslip.io
+      Username: 'root' # ZITADEL_FIRSTINSTANCE_ORG_HUMAN_USERNAME
+      Password: 'RootPassword2!' # ZITADEL_FIRSTINSTANCE_ORG_HUMAN_PASSWORD

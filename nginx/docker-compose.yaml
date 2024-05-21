@@ -1,0 +1,36 @@
+services:
+  nginx:
+    image: nginx
+    volumes:
+      - ../certs:/etc/nginx/ssl
+      - ./conf.d:/etc/nginx/conf.d
+      - myconfs:/etc/nginx/myconfs
+
+    ports:
+      - 80:80
+      - 443:443
+    # depends_on: set via override
+
+  pg:
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+      # - POSTGRES_MULTIPLE_DATABASES=${DB_NAME},two
+    volumes:
+      # - ./postgres:/docker-entrypoint-initdb.d
+      - data:/var/lib/postgresql/data
+    # healthcheck not in use
+    healthcheck:
+      test: pg_isready -d ${DB_NAME} -U me # && pg_isready -d two -U me
+      interval: 5s
+      timeout: 10s
+      retries: 7
+      start_period: 5s
+
+volumes:
+  data:
+  myconfs:

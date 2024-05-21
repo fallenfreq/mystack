@@ -1,0 +1,8 @@
+{
+  "include": ["client", "api", ".eslintrc.js"],
+  "compilerOptions": {
+    "allowJs": false,
+    "baseUrl": ".",
+    "paths": {}
+  }
+}
