@@ -1,3 +1,23 @@
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  computed: {
+    user() {
+      return this.$zitadel.oidcAuth.userProfile
+    },
+    claims() {
+      if (this.user) {
+        return Object.keys(this.user).map(key => ({
+          key,
+          value: this.user[key]
+        }))
+      }
+      return []
+    }
+  }
+})
+</script>
 <template>
   <div class="userinfo">
     <div>
@@ -28,23 +48,3 @@
   }
 }
 </style>
-<script lang="ts">
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-  computed: {
-    user() {
-      return this.$zitadel.oidcAuth.userProfile
-    },
-    claims() {
-      if (this.user) {
-        return Object.keys(this.user).map(key => ({
-          key,
-          value: this.user[key]
-        }))
-      }
-      return []
-    }
-  }
-})
-</script>
