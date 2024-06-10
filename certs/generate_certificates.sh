@@ -22,7 +22,7 @@ OPENSSL_BIN="/usr/local/opt/openssl@3/bin/openssl"
 CSR_FILE="dev.csr"
 CRT_FILE="dev.crt"
 PEM_FILE="fullchain.pem"
-KEY_FILE="privkey.key"
+KEY_FILE="privkey.pem"
 CA_CERT="./certificate_authority/devca.pem"
 CA_KEY="./certificate_authority/devca.key"
 
