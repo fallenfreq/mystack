@@ -18,8 +18,8 @@ const app = server({
   httpPort: Number(envVars.HTTP_DEV_PORT),
   httpsRedirectPort: Number(envVars.INTERNAL_PORT),
   httpsOptions: {
-    cert: fs.readFileSync(path.join(__dirname, '../../certs/fullchain.pem')),
-    key: fs.readFileSync(path.join(__dirname, '../../certs/privkey.pem'))
+    cert: fs.readFileSync(path.join(__dirname, '../../../certs/fullchain.pem')),
+    key: fs.readFileSync(path.join(__dirname, '../../../certs/privkey.pem'))
   }
 })
 
