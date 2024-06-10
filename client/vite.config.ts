@@ -14,8 +14,8 @@ export default defineConfig({
     // host: true,
     // port: 5173,
     https: {
-      key: fs.readFileSync('../certs/fullchain.pem'),
-      cert: fs.readFileSync('../certs/privkey.pem')
+      cert: fs.readFileSync('../certs/fullchain.pem'),
+      key: fs.readFileSync('../certs/privkey.pem')
     }
   },
   resolve: {
