@@ -6,8 +6,6 @@ FROM node:latest
 WORKDIR /vue-app/api 
 
 COPY ./localmods/server ../../localmods/server
-COPY ./localmods/fileCache ../../localmods/fileCache
-COPY ./localmods/myUtils ../../localmods/myUtils
 
 COPY ./vue-app/api/package*.json ./
 COPY ./vue-app/package*.json ../
