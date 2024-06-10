@@ -1,8 +1,10 @@
 privkey.key
+privkey.pem
 fullchain.pem
 devca.key
 devcaa.pem
 dev.crt
 dev.csr
+devca.srl
 ca_generation.log
 certificate_generation.log
