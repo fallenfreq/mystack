@@ -87,7 +87,7 @@ services:
           'CMD',
           'curl',
           '-f',
-          'http://${ZITADEL_EXTERNALDOMAIN}:${MY_COCKROACH_PORT}/health?ready=1'
+          'http://${ZITADEL_EXTERNALDOMAIN}:${MY_COCKROACH_EXTERNALPORT}/health?ready=1'
         ]
       interval: 10s
       timeout: 30s
