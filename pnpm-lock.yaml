@@ -46,8 +46,8 @@ importers:
   api:
     dependencies:
       '@trpc/server':
-        specifier: 11.0.0-rc.373
-        version: 11.0.0-rc.373
+        specifier: 11.0.0-rc.401
+        version: 11.0.0-rc.401
       '@types/node':
         specifier: ^20.1.4
         version: 20.12.12
@@ -83,8 +83,8 @@ importers:
   client:
     dependencies:
       '@trpc/client':
-        specifier: 11.0.0-rc.366
-        version: 11.0.0-rc.366(@trpc/server@11.0.0-rc.373)
+        specifier: 11.0.0-rc.401
+        version: 11.0.0-rc.401(@trpc/server@11.0.0-rc.401)
       '@vue-app/api':
         specifier: workspace:*
         version: link:../api
@@ -696,13 +696,13 @@ packages:
   '@rushstack/eslint-patch@1.10.3':
     resolution: {integrity: sha512-qC/xYId4NMebE6w/V33Fh9gWxLgURiNYgVNObbJl2LZv0GUUItCcCqC5axQSwRaAgaxl2mELq1rMzlswaQ0Zxg==}
 
-  '@trpc/client@11.0.0-rc.366':
-    resolution: {integrity: sha512-bIbcF/UhCifU5i9hbbaMlmOS2NgnRq5W0pJH2SJhrp6jyIIaCF+uNAIZtkfO0GriBb0agBmGIXqvGLFEexiTKA==}
+  '@trpc/client@11.0.0-rc.401':
+    resolution: {integrity: sha512-nRjqcZhsdIJk1BlVGhJhEwsET/KQH+izksWQP7oupeuqYLD6pvCQAvNpzqa1qhlfrfrN08ZSQmgHZ4A+O2FIww==}
     peerDependencies:
-      '@trpc/server': 11.0.0-rc.366+237dbb3f9
+      '@trpc/server': 11.0.0-rc.401+91720833b
 
-  '@trpc/server@11.0.0-rc.373':
-    resolution: {integrity: sha512-i5q1KkQ0fuHqYbEPWMfk2rTp31wde8RKo0jxWfwZU8YsnjaErZ8lFnGCxz252l7mMCqT70IKR6c/N5MEXqChDA==}
+  '@trpc/server@11.0.0-rc.401':
+    resolution: {integrity: sha512-cHNrdZSTxabIo9XZ+c2GUCVlJOa84DI7ElzLph0oMn8Tsrq9iep+YWyhuoBlQKNdoCiRFgsptdTIvozWGdaNFw==}
 
   '@tsconfig/node20@20.1.4':
     resolution: {integrity: sha512-sqgsT69YFeLWf5NtJ4Xq/xAF8p4ZQHlmGW74Nu2tD4+g5fAsposc4ZfaaPixVu4y01BEiDCWLRDCvDM5JOsRxg==}
@@ -2219,11 +2219,11 @@ snapshots:
 
   '@rushstack/eslint-patch@1.10.3': {}
 
-  '@trpc/client@11.0.0-rc.366(@trpc/server@11.0.0-rc.373)':
+  '@trpc/client@11.0.0-rc.401(@trpc/server@11.0.0-rc.401)':
     dependencies:
-      '@trpc/server': 11.0.0-rc.373
+      '@trpc/server': 11.0.0-rc.401
 
-  '@trpc/server@11.0.0-rc.373': {}
+  '@trpc/server@11.0.0-rc.401': {}
 
   '@tsconfig/node20@20.1.4': {}
 
