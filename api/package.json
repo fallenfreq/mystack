@@ -20,7 +20,7 @@
     "db": "docker compose -f ../nginx/docker-compose.yaml up pg",
     "start": "node --experimental-json-modules --experimental-import-meta-resolve --trace-warnings -r dotenv/config 'dist/src/app.js'",
     "preview": "pnpm --filter @vue-app/api start",
-    "dev": "tsc -w & pnpm start",
+    "dev": "tsc -w & nodemon --experimental-json-modules --experimental-import-meta-resolve --trace-warnings -r dotenv/config 'dist/src/app.js'",
     "build": "tsc",
     "migrate": "pnpm drizzle-kit generate:pg",
     "migrate:push": "node -r dotenv/config dist/src/config/migrate.js"
