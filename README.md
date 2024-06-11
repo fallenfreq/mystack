@@ -1,5 +1,3 @@
-The server module needs to be published so this can be used by other people and the docker build context can stay at the root of the monorepo.
-
 Tech Stack Monorepo using Typescript, Vue3, Vite, Zitadel, tRPC, Drizzle, docker, nginx
 
 "privekey.pem" and "fullchain.pem" certs need to exsist in "./certs". For development, you can generate a certificate authority and self signed certificates using the scripts in the "./certs" directory.
