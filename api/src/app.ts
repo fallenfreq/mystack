@@ -4,7 +4,7 @@ import { createContext } from './config/trpc.js'
 import { envVars } from './config/config.js'
 
 import cors from 'cors'
-import server from 'server'
+import queuetie from 'queuetie'
 
 import * as fs from 'fs'
 
@@ -13,7 +13,7 @@ import { fileURLToPath } from 'url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-const app = server({
+const app = queuetie({
   httpsRedirect: true,
   httpPort: Number(envVars.HTTP_DEV_PORT),
   httpsRedirectPort: Number(envVars.INTERNAL_PORT),

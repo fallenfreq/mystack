@@ -33,7 +33,7 @@
     "drizzle-orm": "^0.30.9",
     "jsonwebtoken": "^9.0.0",
     "postgres": "^3.4.4",
-    "server": "../../localmods/server",
+    "queuetie": "link:/Users/michael/dev/localmods/queuetie",
     "zod": "^3.23.5"
   },
   "nodemonConfig": {
