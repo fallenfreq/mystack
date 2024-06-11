@@ -3,23 +3,21 @@ FROM node:latest
 
 # the dir inside the container
 # paths on right are relative to this WORKDIR
-WORKDIR /vue-app/api 
+WORKDIR /api 
 
-COPY ./localmods/queuetie ../../localmods/queuetie
+COPY ./api/package*.json ./
+COPY ./package*.json ../
 
-COPY ./vue-app/api/package*.json ./
-COPY ./vue-app/package*.json ../
-
-COPY ./vue-app/certs .../certs
+COPY ./certs ../certs
 
 RUN corepack enable
 
 RUN pnpm install --production
 RUN pnpm install --production -C ../
 
-COPY ./vue-app/api/src ./src
-COPY ./vue-app/api/dist ./dist
+COPY ./api/src ./src
+COPY ./api/dist ./dist
 
-COPY ./vue-app/client/dist ../client/dist
+COPY ./client/dist ../client/dist
 
 CMD ["pnpm", "start"]
