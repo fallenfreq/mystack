@@ -8,6 +8,14 @@ Create a copy of any ".example" files and fill them in with the ".exmaple" exten
 
 "docker compose up" will start Zitadel, the necessary databases and the api - which also serves the vue 3 client. Docker is intended as an option for deployment for the api and sits behind nginx as a reverse proxy; Zitadel is always started as a container and has its own network, nginx, databases etc.
 
+/trpc will access the trpc routes, all other routes will currently serve the vue 3 app.
+
+tRPC example:
+https://localhost/trpc/echo?batch=1&input=%7B%220%22%3A%7B%22json%22%3A%7B%22name%22%3A%22from%20tRPC%22%7D%7D%7D
+
+Vue example:
+https://localhost/about
+
 run "pnpm docker:up:zitadel" to start zitadel on it's own
 run "pnpm db:api" to start a devlopment database for the api. Docker needs to be installed locally for this
 
