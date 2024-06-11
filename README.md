@@ -11,6 +11,7 @@ Create a copy of any ".example" files and fill them in with the ".exmaple" exten
 run "pnpm docker:up:zitadel" to start zitadel on it's own
 run "pnpm db:api" to start a devlopment database for the api. Docker needs to be installed locally for this
 
+run "pnpm install --shamefully-hoist"
 run "pnpm build" to build the api and the client
 run "pnpm dev" to start the api and a vite dev server of the Vue 3 clinet
 
