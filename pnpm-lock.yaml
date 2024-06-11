@@ -67,8 +67,8 @@ importers:
         specifier: ^3.4.4
         version: 3.4.4
       queuetie:
-        specifier: link:/Users/michael/dev/localmods/queuetie
-        version: link:../../localmods/queuetie
+        specifier: ^0.0.1
+        version: 0.0.1
       zod:
         specifier: ^3.23.5
         version: 3.23.8
@@ -1642,6 +1642,9 @@ packages:
 
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
+
+  queuetie@0.0.1:
+    resolution: {integrity: sha512-pSpzDdaAF5C5tC/+TCjVyB5YNWMBOdEBs4nqyDIReHGy/xwDX1b4/ILfb5O2qQGYmKOHkxAzWOVptwP/Kk8u3g==}
 
   randombytes@2.1.0:
     resolution: {integrity: sha512-vYl3iOX+4CKUWuxGi9Ukhie6fsqXqS9FE2Zaic4tNFD2N2QQaXOMFbuKK4QmDHC0JO6B1Zp41J0LpT0oR68amQ==}
@@ -3238,6 +3241,10 @@ snapshots:
   punycode@2.3.1: {}
 
   queue-microtask@1.2.3: {}
+
+  queuetie@0.0.1:
+    dependencies:
+      '@types/node': 20.12.12
 
   randombytes@2.1.0:
     dependencies:
