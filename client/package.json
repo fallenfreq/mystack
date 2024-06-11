@@ -13,7 +13,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "@trpc/client": "11.0.0-rc.366",
+    "@trpc/client": "11.0.0-rc.401",
     "@vue-app/api": "workspace:*",
     "@zitadel/vue": "^1.0.3",
     "vue": "^3.4.21",
