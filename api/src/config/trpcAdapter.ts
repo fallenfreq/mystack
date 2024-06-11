@@ -7,7 +7,7 @@ import {
   nodeHTTPRequestHandler
 } from '@trpc/server/adapters/node-http'
 
-import type { AugmentedRequest, AugmentedResponse, MiddlewareCall } from 'server'
+import type { AugmentedRequest, AugmentedResponse, MiddlewareCall } from 'queuetie'
 
 type CreateMyServerContextOptions = NodeHTTPCreateContextFnOptions<
   AugmentedRequest,

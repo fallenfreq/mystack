@@ -5,7 +5,7 @@ FROM node:latest
 # paths on right are relative to this WORKDIR
 WORKDIR /vue-app/api 
 
-COPY ./localmods/server ../../localmods/server
+COPY ./localmods/queuetie ../../localmods/queuetie
 
 COPY ./vue-app/api/package*.json ./
 COPY ./vue-app/package*.json ../
