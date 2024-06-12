@@ -29,6 +29,21 @@ const { HOST, CLIENT_PORT } = envVars
 app.use(
   'trpc',
   createMyServerMiddleware({
+    onError: ({ error }) => {
+      // Change error to hide deatils from the client and log if required
+      if (error.code == 'INTERNAL_SERVER_ERROR') {
+        // Can log errors from here
+        console.log({
+          name: error.name,
+          code: error.code,
+          message: error.message
+        })
+        // Change error
+        error.stack = ''
+        error.message = 'Server error'
+      }
+      // throw Error('Will crash if thrown here')
+    },
     middleware: (req, res, next) => {
       cors({
         origin: new RegExp(`^https?://([^/]+\\.)?${HOST}:${CLIENT_PORT}$`, 'i'),
