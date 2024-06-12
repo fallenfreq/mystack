@@ -29,9 +29,7 @@ const { HOST, CLIENT_PORT } = envVars
 app.use(
   'trpc',
   createMyServerMiddleware({
-    // req context here should be correct when my PR is merged
     middleware: (req, res, next) => {
-      // console.log({ queue: req.queue })
       cors({
         origin: new RegExp(`^https?://([^/]+\\.)?${HOST}:${CLIENT_PORT}$`, 'i'),
         optionsSuccessStatus: 200 // 204
