@@ -4,6 +4,15 @@
 
 // createApp(App).mount('#app')
 
+import { createVuestic } from 'vuestic-ui'
+// import 'vuestic-ui/css'
+import 'vuestic-ui/styles/essential.css'
+import 'vuestic-ui/styles/typography.css'
+import config from '../vuestic.config.js'
+
+const vuestic = createVuestic({ config })
+console.log({ vuestic })
+
 import './assets/main.css'
 
 import { createApp } from 'vue'
@@ -21,6 +30,7 @@ zitadelAuth.oidcAuth.startup().then((ok: any) => {
   if (ok) {
     const app = createApp(App)
     app.use(router)
+    app.use(vuestic)
     app.config.globalProperties.$zitadel = zitadelAuth
     app.mount('#app')
   } else {
