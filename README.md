@@ -1,4 +1,4 @@
-Tech Stack Monorepo using Typescript, Vue3, Vite, Zitadel, tRPC, Drizzle, docker, nginx
+Tech Stack Monorepo using Typescript, Vue3, VueStic, Tailwind, Vite, Zitadel, tRPC, Drizzle, docker, nginx
 
 "privekey.pem" and "fullchain.pem" certs need to exsist in "./certs". For development, you can generate a certificate authority and self signed certificates using the scripts in the "./certs" directory.
 
@@ -24,3 +24,12 @@ run "pnpm dev" to start the api and a vite dev server of the Vue 3 clinet
 
 Zitadel is at port 4443
 Vite dev server is at 5173
+
+Tailwind with Vuestic
+Read more here - https://ui.vuestic.dev/styles/tailwind
+
+npx sync-tailwind-with-vuestic - formats and transfers the color and breakpoints settings from the tailwind.config.\* file (and in its absence, it uses the default Tailwind CSS configuration) to the root file vuestic.config.js (also added by this command);
+
+npx watch-tailwind - watches tailwind.config.\* in background and synchronizes the Vuestic UI configuration on the fly;
+
+npx sync-vuestic-with-tailwind - transfers color and breakpoint settings from default Vuestic UI config to the Tailwind's configuration file (tailwind.config.cjs).
