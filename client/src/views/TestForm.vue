@@ -2,7 +2,7 @@
   <div class="my-8">
     <h2 class="text-3xl">Vuestic Demo</h2>
     <p>This is just a demo of a Vuestic form.</p>
-    <a href="https://ui.vuestic.dev/introduction/overview"
+    <a target="_blank" rel="noopener noreferrer" href="https://ui.vuestic.dev/introduction/overview"
       >https://ui.vuestic.dev/introduction/overview</a
     >
   </div>
