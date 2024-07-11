@@ -14,6 +14,7 @@ import HelloWorld from './components/HelloWorld.vue'
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/login">Login</RouterLink>
+        <RouterLink to="/test-form">Vuestic</RouterLink>
         <RouterLink to="/admin" v-if="$zitadel.hasRole('admin')">Admin</RouterLink>
         <a
           href="#"
