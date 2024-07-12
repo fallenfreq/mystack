@@ -6,9 +6,14 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/test-form',
-      name: 'testForm',
-      component: () => import('../views/TestForm.vue')
+      path: '/primevue-demo',
+      name: 'primevueDemo',
+      component: () => import('../views/PrimevueDemo.vue')
+    },
+    {
+      path: '/vuestic-demo',
+      name: 'vuesticDemo',
+      component: () => import('../views/VuesticDemo.vue')
     },
     {
       path: '/',

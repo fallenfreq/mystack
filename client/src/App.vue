@@ -1,20 +1,25 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import DarkModeSwitch from './components/DarkModeSwitch.vue'
+// import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+    <p>Dark mode switch used by Tailwind</p>
+    <p>Only Primevue is using Tailwind currently</p>
+    <DarkModeSwitch />
+    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="50" height="50" />
 
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+      <!-- <HelloWorld msg="You did it!" /> -->
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/login">Login</RouterLink>
-        <RouterLink to="/test-form">Vuestic</RouterLink>
+        <RouterLink to="/vuestic-demo">Vuestic</RouterLink>
+        <RouterLink to="/primevue-demo">Primevue</RouterLink>
         <RouterLink to="/admin" v-if="$zitadel.hasRole('admin')">Admin</RouterLink>
         <a
           href="#"

@@ -1,17 +1,13 @@
-// import { createApp } from 'vue'
-// import './style.css'
-// import App from './App.vue'
-
-// createApp(App).mount('#app')
-
 import { createVuestic } from 'vuestic-ui'
 // import 'vuestic-ui/css'
+// Vuestic css used when tailwind is used to stop confilcts
 import 'vuestic-ui/styles/essential.css'
 import 'vuestic-ui/styles/typography.css'
 import config from '../vuestic.config.js'
-
 const vuestic = createVuestic({ config })
-console.log({ vuestic })
+
+import PrimeVue from 'primevue/config'
+import Lara from './presets/lara'
 
 import './assets/main.css'
 
@@ -29,9 +25,13 @@ declare module 'vue' {
 zitadelAuth.oidcAuth.startup().then((ok: any) => {
   if (ok) {
     const app = createApp(App)
+    app.config.globalProperties.$zitadel = zitadelAuth
     app.use(router)
     app.use(vuestic)
-    app.config.globalProperties.$zitadel = zitadelAuth
+    app.use(PrimeVue, {
+      unstyled: true,
+      pt: Lara
+    })
     app.mount('#app')
   } else {
     console.error('Startup was not ok')
