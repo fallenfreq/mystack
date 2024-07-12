@@ -17,11 +17,16 @@
     "@vue-app/api": "workspace:*",
     "@vuestic/tailwind": "^0.1.5",
     "@zitadel/vue": "^1.0.3",
+    "install": "^0.13.0",
+    "npm": "^10.8.2",
+    "primeicons": "^7.0.0",
+    "primevue": "^3",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0",
     "vuestic-ui": "^1.9.12"
   },
   "devDependencies": {
+    "@primevue/auto-import-resolver": "^4.0.0",
     "@vitejs/plugin-vue": "^5.0.4",
     "@vue/eslint-config-prettier": "^9.0.0",
     "@vue/eslint-config-typescript": "^13.0.0",
@@ -30,6 +35,7 @@
     "eslint-plugin-vue": "^9.23.0",
     "postcss": "^8.4.39",
     "tailwindcss": "^3.4.4",
+    "unplugin-vue-components": "^0.27.2",
     "vite": "^5.2.8",
     "vue-tsc": "^2.0.11"
   }

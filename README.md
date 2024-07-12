@@ -1,4 +1,6 @@
-Tech Stack Monorepo using Typescript, Vue3, VueStic, Tailwind, Vite, Zitadel, tRPC, Drizzle, docker, nginx
+Tech Stack Monorepo using Typescript, Vue3, VueStic, Primevue, Tailwind, Vite, Zitadel, tRPC, Drizzle, docker, nginx
+
+The layout is all over the place right now as I transition to using Primevue with Tailwind
 
 "privekey.pem" and "fullchain.pem" certs need to exsist in "./certs". For development, you can generate a certificate authority and self signed certificates using the scripts in the "./certs" directory.
 
@@ -24,6 +26,12 @@ run "pnpm dev" to start the api and a vite dev server of the Vue 3 clinet
 
 Zitadel is at port 4443
 Vite dev server is at 5173
+
+The framework currently has Vuestic and Primevue intergated
+
+Cant use this until v4 supports tailwind presets since we are using the unstyled Primevue components with a Tailwind pass through object
+https://github.com/primefaces/tailwindcss-primeui
+https://primevue.org/tailwind/
 
 Tailwind with Vuestic
 Read more here - https://ui.vuestic.dev/styles/tailwind
