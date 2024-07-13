@@ -14,9 +14,6 @@ export default defineConfig({
       resolvers: [PrimeVueResolver()]
     })
   ],
-  // optimizeDeps: {
-  //   include: ['@vue-app/api']
-  // },
   server: {
     // host: true,
     // port: 5173,
@@ -26,8 +23,6 @@ export default defineConfig({
     }
   },
   resolve: {
-    // attempt to get workspace imports to work
-    // preserveSymlinks: true,
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
