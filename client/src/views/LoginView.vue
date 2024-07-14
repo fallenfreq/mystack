@@ -1,21 +1,17 @@
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { computed } from 'vue'
+import zitadelAuth from '@/services/zitadelAuth'
 
-export default defineComponent({
-  computed: {
-    user() {
-      return this.$zitadel.oidcAuth.userProfile
-    },
-    claims() {
-      if (this.user) {
-        return Object.keys(this.user).map(key => ({
-          key,
-          value: this.user[key]
-        }))
-      }
-      return []
-    }
+const user = computed(() => zitadelAuth.oidcAuth.userProfile)
+
+const claims = computed(() => {
+  if (user.value) {
+    return Object.keys(user.value).map(key => ({
+      key,
+      value: user.value[key]
+    }))
   }
+  return []
 })
 </script>
 <template>
