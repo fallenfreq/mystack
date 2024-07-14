@@ -41,7 +41,7 @@ h3 {
   color: var(--color-heading);
 }
 
-@media (min-width: 1024px) {
+/* @media (min-width: 1024px) {
   .item {
     margin-top: 0;
     padding: 0.4rem 0 1rem calc(var(--section-gap) / 2);
@@ -83,5 +83,5 @@ h3 {
   .item:last-of-type:after {
     display: none;
   }
-}
+} */
 </style>
