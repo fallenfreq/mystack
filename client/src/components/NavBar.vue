@@ -44,6 +44,12 @@ const items = ref([
   },
   { label: 'Admin', icon: 'pi pi-cog', url: '/admin', visible: () => zitadelAuth.hasRole('admin') },
   {
+    label: 'Profile',
+    icon: 'pi pi-user',
+    command: async () => await router.push('/profile'),
+    visible: () => zitadelAuth.oidcAuth.isAuthenticated
+  },
+  {
     label: 'Signout',
     icon: 'pi pi-sign-out',
     command: () => zitadelAuth.oidcAuth.signOut(),
