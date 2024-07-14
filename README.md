@@ -1,4 +1,4 @@
-Tech Stack Monorepo using Typescript, Vue3, VueStic, Primevue, Tailwind, Vite, Zitadel, tRPC, Drizzle, docker, nginx
+Tech Stack Monorepo using Typescript, Vue3, VueStic, Primevue unstyled with Tailwind, Vite, Zitadel, tRPC, Drizzle, docker, nginx
 
 The layout is all over the place right now as I transition to using Primevue with Tailwind
 
