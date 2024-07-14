@@ -1,7 +1,5 @@
 Tech Stack Monorepo using Typescript, Vue3, VueStic, Primevue unstyled with Tailwind, Vite, Zitadel, tRPC, Drizzle, docker, nginx
 
-The layout is all over the place right now as I transition to using Primevue with Tailwind
-
 "privekey.pem" and "fullchain.pem" certs need to exsist in "./certs". For development, you can generate a certificate authority and self signed certificates using the scripts in the "./certs" directory.
 
 Create a copy of any ".example" files and fill them in with the ".exmaple" extention removed. ".env.example" becomes ".env"
