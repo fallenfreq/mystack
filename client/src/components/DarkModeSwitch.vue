@@ -18,6 +18,7 @@ function darkModeHandler(event: SelectButtonChangeEvent) {
 <template>
   <div class="card flex">
     <SelectButton
+      class="text-xs"
       v-model="value"
       :options="options"
       optionLabel="value"

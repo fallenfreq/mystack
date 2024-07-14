@@ -19,32 +19,20 @@ export default defineComponent({
 })
 </script>
 <template>
-  <div class="userinfo">
-    <div>
-      <h1>
-        This is a login-protected page
-      </h1>
-      <h2>
-        The following profile data is extended by information from ZITADELs userinfo endpoint.
-      </h2>
-      <p>
-        <ul class="claims">
-          <li v-for="c in claims" :key="c.key">
-            <strong>{{ c.key }}</strong
-            >: {{ c.value }}
-          </li>
-        </ul>
-      </p>
-    </div>
+  <div>
+    <h1>
+      This is a login-protected page
+    </h1>
+    <h2>
+      The following profile data is extended by information from ZITADELs userinfo endpoint.
+    </h2>
+    <p>
+      <ul class="claims">
+        <li v-for="c in claims" :key="c.key">
+          <strong>{{ c.key }}</strong
+          >: {{ c.value }}
+        </li>
+      </ul>
+    </p>
   </div>
 </template>
-
-<style>
-@media (min-width: 1024px) {
-  .userinfo {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
-</style>
