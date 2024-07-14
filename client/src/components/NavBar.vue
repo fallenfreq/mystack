@@ -15,18 +15,15 @@
 import { ref } from 'vue'
 import zitadelAuth from '@/services/zitadelAuth'
 import router from '@/router'
-
 const items = ref([
   {
     label: 'Home',
     icon: 'pi pi-home',
-    // url: '/',
     command: async () => await router.push('/')
   },
   {
     label: 'About',
     icon: 'pi pi-info-circle',
-    // url: '/about',
     command: async () => await router.push('/about')
   },
   {
@@ -36,13 +33,11 @@ const items = ref([
       {
         label: 'Vuestic',
         icon: 'pi pi-bolt',
-        // url: '/vuestic-demo'
         command: async () => await router.push('/vuestic-demo')
       },
       {
         label: 'Primevue',
         icon: 'pi pi-prime',
-        // url: '/primevue-demo',
         command: async () => await router.push('/primevue-demo')
       }
     ]
@@ -57,7 +52,8 @@ const items = ref([
   {
     label: 'Login',
     icon: 'pi pi-user',
-    login: '/primevue-demo'
+    command: async () => await router.push('/login'),
+    visible: () => !zitadelAuth.oidcAuth.isAuthenticated
   }
 ])
 </script>
