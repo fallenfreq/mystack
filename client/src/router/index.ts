@@ -48,6 +48,19 @@ const router = createRouter({
         }
         return import('../views/NoAccess.vue')
       }
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      meta: {
+        authName: zitadelAuth.oidcAuth.authName
+      },
+      component: () => {
+        if (zitadelAuth.oidcAuth.isAuthenticated) {
+          return import('../views/LoginView.vue')
+        }
+        return import('../views/NoAccess.vue')
+      }
     }
   ]
 })
