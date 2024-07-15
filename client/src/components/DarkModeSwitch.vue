@@ -1,9 +1,13 @@
 <script setup lang="ts">
-const light = { icon: 'pi pi-sun', value: 'Light' }
-const dark = { icon: 'pi pi-moon', value: 'Dark' }
 import { ref } from 'vue'
 import type { SelectButtonChangeEvent } from 'primevue/selectbutton'
-const value = ref(light)
+// Dark mode starts using the os preference
+window.matchMedia('(prefers-color-scheme: dark)').matches &&
+  document.documentElement.classList.add('dark')
+
+const light = { icon: 'pi pi-sun', value: 'Light' }
+const dark = { icon: 'pi pi-moon', value: 'Dark' }
+const value = ref(document.documentElement.classList.contains('dark') ? dark : light)
 const options = ref([light, dark])
 
 function darkModeHandler(event: SelectButtonChangeEvent) {
