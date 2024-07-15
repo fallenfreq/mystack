@@ -4,6 +4,7 @@
       <div class="font-black text-primary text-3xl mb-3">Primevue demo</div>
       <span>Don't have an account?</span>
       <a class="no-underline ml-2 text-blue-500 cursor-pointer">Create today!</a>
+      <p>This is not a real login form! go to login to login to Zitadel</p>
     </div>
 
     <div>
