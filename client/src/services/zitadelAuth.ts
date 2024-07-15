@@ -1,4 +1,5 @@
 import { createZITADELAuth } from '@zitadel/vue'
+import { jwtDecode } from 'jwt-decode'
 // --shamefully-hoist with pnpm to get oidc-client used by @zitadel/vue
 // import { User } from 'oidc-client'
 
@@ -8,11 +9,27 @@ import 'vue-oidc-client/vue3'
 
 // need to validate env's
 // REDIRECT SETTINGS need to be set in the zitadel app correctly for login page to work
-const zitadelAuth = createZITADELAuth({
-  project_resource_id: import.meta.env.VITE_API_PROJECT_RESOURCE_ID,
-  client_id: import.meta.env.VITE_API_CLIENT_ID,
-  issuer: import.meta.env.VITE_API_ISSUER
-})
+const zitadelAuth = createZITADELAuth(
+  {
+    project_resource_id: import.meta.env.VITE_API_PROJECT_RESOURCE_ID,
+    client_id: import.meta.env.VITE_API_CLIENT_ID,
+    issuer: import.meta.env.VITE_API_ISSUER
+  },
+  undefined,
+  undefined,
+  undefined,
+  {
+    scope: [
+      'openid',
+      'profile',
+      'email',
+      'offline_access',
+      `urn:zitadel:iam:org:project:id:${import.meta.env.VITE_API_PROJECT_RESOURCE_ID}:aud`,
+      'urn:zitadel:iam:org:projects:roles',
+      'urn:zitadel:iam:user:metadata'
+    ].join(' ')
+  }
+)
 
 // handle events
 zitadelAuth.oidcAuth.events.addAccessTokenExpiring(function () {
@@ -32,6 +49,7 @@ zitadelAuth.oidcAuth.events.addSilentRenewError(function (err) {
 
 zitadelAuth.oidcAuth.events.addUserLoaded(function (user) {
   // eslint-disable-next-line no-console
+  console.log('Decoded jwt id_token', jwtDecode(user.id_token))
   console.log('user loaded', user)
 })
 

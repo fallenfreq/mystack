@@ -22,7 +22,7 @@ declare module 'vue' {
   }
 }
 
-zitadelAuth.oidcAuth.startup().then((ok: any) => {
+zitadelAuth.oidcAuth.startup().then((ok: boolean) => {
   if (ok) {
     const app = createApp(App)
     app.config.globalProperties.$zitadel = zitadelAuth

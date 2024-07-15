@@ -17,6 +17,7 @@
     "@vue-app/api": "workspace:*",
     "@vuestic/tailwind": "^0.1.5",
     "@zitadel/vue": "^1.0.3",
+    "axios": "^1.7.2",
     "install": "^0.13.0",
     "npm": "^10.8.2",
     "primeicons": "^7.0.0",
