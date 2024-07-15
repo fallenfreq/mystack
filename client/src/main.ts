@@ -7,7 +7,9 @@ import config from '../vuestic.config.js'
 const vuestic = createVuestic({ config })
 
 import PrimeVue from 'primevue/config'
-import Lara from './presets/lara'
+// Pass Aura or Lara as a theme to PrimeVue's pt property
+// import Lara from './presets/lara'
+import Aura from './presets/aura'
 
 import './assets/main.css'
 
@@ -30,7 +32,7 @@ zitadelAuth.oidcAuth.startup().then((ok: boolean) => {
     app.use(vuestic)
     app.use(PrimeVue, {
       unstyled: true,
-      pt: Lara
+      pt: Aura
     })
     app.mount('#app')
   } else {
