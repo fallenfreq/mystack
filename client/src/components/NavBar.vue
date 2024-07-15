@@ -1,14 +1,12 @@
 <template>
-  <div class="card">
-    <Menubar :model="items">
-      <template #start>
-        <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="35" height="35" />
-      </template>
-      <template #end>
-        <DarkModeSwitch />
-      </template>
-    </Menubar>
-  </div>
+  <Menubar :model="items">
+    <template #start>
+      <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="35" height="35" />
+    </template>
+    <template #end>
+      <DarkModeSwitch />
+    </template>
+  </Menubar>
 </template>
 
 <script setup>
