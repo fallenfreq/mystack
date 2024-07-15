@@ -5,6 +5,12 @@
 @tailwind components;
 @tailwind utilities;
 
+*,
+*::before,
+*::after {
+  border-color: rgb(var(--border-color));
+}
+
 /* css from original demo */
 
 /* #app {
