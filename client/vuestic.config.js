@@ -4,6 +4,7 @@ const getColour = (name, preset) => {
   const rgb = cssVariables[preset]?.['--' + name]
   return rgb ? `rgb(${rgb.replace(new RegExp(' ', 'g'), ', ')})` : undefined
 }
+// TODO: Need to create the other colour variables and set them in the appropriate presets
 
 export default {
   breakpoints: {
