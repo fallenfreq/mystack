@@ -1,6 +1,6 @@
 <template>
-  <div class="surface-card p-4 shadow-2 border-round w-full lg:max-w-lg">
-    <div class="my-8">
+  <div class="shadow-md border rounded-lg p-8 w-full lg:max-w-lg">
+    <div class="mb-5">
       <h2 class="text-3xl">Vuestic Demo</h2>
       <p>This is just a demo of a Vuestic form.</p>
       <a
