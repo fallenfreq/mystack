@@ -1,6 +1,8 @@
 {
   "extends": "@tsconfig/node20/tsconfig.json",
   "include": [
+    "plugins",
+    "vuestic.config.js",
     "vite.config.*",
     "vitest.config.*",
     "cypress.config.*",
@@ -8,6 +10,7 @@
     "playwright.config.*"
   ],
   "compilerOptions": {
+    "allowJs": true,
     "composite": true,
     "noEmit": true,
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",

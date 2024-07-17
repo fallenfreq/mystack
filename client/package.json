@@ -20,6 +20,7 @@
     "axios": "^1.7.2",
     "install": "^0.13.0",
     "npm": "^10.8.2",
+    "postcss-safe-parser": "^7.0.0",
     "primeicons": "^7.0.0",
     "primevue": "^3",
     "vue": "^3.4.21",
@@ -28,6 +29,7 @@
   },
   "devDependencies": {
     "@primevue/auto-import-resolver": "^4.0.0",
+    "@types/postcss-safe-parser": "^5.0.4",
     "@vitejs/plugin-vue": "^5.0.4",
     "@vue/eslint-config-prettier": "^9.0.0",
     "@vue/eslint-config-typescript": "^13.0.0",
