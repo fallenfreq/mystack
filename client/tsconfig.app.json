@@ -1,12 +1,14 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
   "include": [
-    "vuestic.config.ts",
+    "cssVariables.js",
+    "vuestic.config.js",
     "env.d.ts",
     "src/**/*",
     "src/**/*.vue",
     "src/services/zitadelAuth.ts",
-    "../../api/src/routes/appRouter.ts"
+    "../../api/src/routes/appRouter.ts",
+    "plugins"
   ],
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {

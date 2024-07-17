@@ -1,9 +1,10 @@
 import { createVuestic } from 'vuestic-ui'
+
 // import 'vuestic-ui/css'
 // Vuestic css used when tailwind is used to stop confilcts
 import 'vuestic-ui/styles/essential.css'
 import 'vuestic-ui/styles/typography.css'
-import config from '../vuestic.config.js'
+import config from '../vuestic.config'
 const vuestic = createVuestic({ config })
 
 import PrimeVue from 'primevue/config'

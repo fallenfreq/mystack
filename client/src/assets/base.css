@@ -75,3 +75,10 @@
     --primary-highlight-hover-opacity: 0.2;
   }
 }
+
+/*
+Vuestic injects it's variables after main.css
+use the colours config to set the colours for Vuestic
+https://ui.vuestic.dev/styles/colors
+https://ui.vuestic.dev/services/colors-config
+*/
