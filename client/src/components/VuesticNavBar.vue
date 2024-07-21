@@ -1,4 +1,8 @@
 <template>
+  <!--
+    overflow-hidden stops the darkmode switch from creating a horzontal scroll bar on the viewport
+    I put it here instead of the darkmode switch because otherwise the focus highlight on the darkmode switch gets cut off
+  -->
   <VaNavbar color="BackgroundPrimary" class="overflow-hidden rounded-lg border h-auto p-3 mb-3">
     <template #left>
       <RouterLink class="flex items-center" to="/" tabindex="0" style="cursor: pointer">
@@ -112,7 +116,7 @@
         </VaNavbarItem>
       </template>
       <VaNavbarItem>
-        <DarkModeSwitch />
+        <VuesticDarkModeSwitch />
       </VaNavbarItem>
     </template>
   </VaNavbar>
