@@ -1,21 +1,6 @@
-<template>
-  <VaSwitch
-    v-model="switchValue"
-    color="BackgroundSecondary"
-    style="--va-switch-checker-background-color: #252723"
-    @input="darkModeHandler"
-    class=""
-  >
-    <template #innerLabel>
-      <div class="va-text-center">
-        <VaIcon :name="switchValue ? 'dark_mode' : 'light_mode'" />
-      </div>
-    </template>
-  </VaSwitch>
-</template>
-
 <script setup lang="ts">
 import { ref } from 'vue'
+import type { SelectButtonChangeEvent } from 'primevue/selectbutton'
 import { useColors, useGlobalConfig } from 'vuestic-ui'
 
 const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary')
@@ -29,10 +14,14 @@ if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
   document.documentElement.classList.add('dark')
 }
 
-let switchValue = ref(document.documentElement.classList.contains('dark'))
+const light = { icon: 'pi pi-sun', value: 'Light' }
+const dark = { icon: 'pi pi-moon', value: 'Dark' }
 
-function darkModeHandler(event: any) {
-  if (event.target['checked']) {
+const value = ref(document.documentElement.classList.contains('dark') ? dark : light)
+const options = ref([light, dark])
+
+function darkModeHandler(event: SelectButtonChangeEvent) {
+  if (event.value.value === 'Dark') {
     useColors().applyPreset('dark')
     document.documentElement.classList.add('dark')
   } else {
@@ -41,3 +30,21 @@ function darkModeHandler(event: any) {
   }
 }
 </script>
+
+<template>
+  <div class="card flex">
+    <SelectButton
+      class="text-xs"
+      v-model="value"
+      :options="options"
+      optionLabel="value"
+      dataKey="value"
+      aria-labelledby="custom"
+      @change="darkModeHandler"
+    >
+      <template #option="slotProps">
+        <i :class="slotProps.option.icon"></i>
+      </template>
+    </SelectButton>
+  </div>
+</template>

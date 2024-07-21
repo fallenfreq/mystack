@@ -1,4 +1,5 @@
 import cssVariables from './cssVariables'
+import { createIconsConfig } from 'vuestic-ui'
 
 const getColour = (name, preset) => {
   const rgb = cssVariables[preset]?.['--' + name]
@@ -16,6 +17,37 @@ export default {
       '2xl': 1536
     }
   },
+
+  icons: createIconsConfig({
+    // va-arrow-down and va-arrow-up were using a deprecated icon from material-icons
+    aliases: [
+      {
+        name: 'va-arrow-down',
+        to: 'keyboard_arrow_down'
+      },
+      {
+        name: 'va-arrow-up',
+        to: 'keyboard_arrow_up'
+      }
+    ],
+    fonts: [
+      {
+        name: 'mi-{icon}',
+        resolve: ({ icon }) => ({
+          content: icon,
+          class: 'material-icons'
+        })
+      },
+      {
+        name: '{icon}',
+        resolve: ({ icon }) => ({
+          content: icon,
+          class: 'material-symbols-outlined'
+        })
+      }
+    ]
+  }),
+
   colors: {
     presets: {
       light: {
