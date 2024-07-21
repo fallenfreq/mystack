@@ -4,7 +4,7 @@ import { RouterView } from 'vue-router'
 
 <template>
   <header>
-    <NavBar />
+    <vuesticNav />
   </header>
 
   <main class="flex justify-center mt-5">

@@ -9,6 +9,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     Button: typeof import('primevue/button')['default']
     Checkbox: typeof import('primevue/checkbox')['default']
+    DarkMode: typeof import('./src/components/DarkModeSwitch.vue')['default']
     DarkModeSwitch: typeof import('./src/components/DarkModeSwitch.vue')['default']
     IconCommunity: typeof import('./src/components/icons/IconCommunity.vue')['default']
     IconDocumentation: typeof import('./src/components/icons/IconDocumentation.vue')['default']
@@ -18,10 +19,12 @@ declare module 'vue' {
     InputText: typeof import('primevue/inputtext')['default']
     Menubar: typeof import('primevue/menubar')['default']
     NavBar: typeof import('./src/components/NavBar.vue')['default']
+    PrimeDarkModeSwitch: typeof import('./src/components/PrimeDarkModeSwitch.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SelectButton: typeof import('primevue/selectbutton')['default']
     TheWelcome: typeof import('./src/components/TheWelcome.vue')['default']
+    VuesticNav: typeof import('./src/components/vuesticNav.vue')['default']
     WelcomeItem: typeof import('./src/components/WelcomeItem.vue')['default']
   }
 }
