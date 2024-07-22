@@ -21,7 +21,7 @@
             </VaButton>
           </template>
 
-          <VaDropdownContent class="mt-3 min-w-64">
+          <VaDropdownContent class="w-64">
             <template v-for="item in items" :key="item.title">
               <VaSidebarItem
                 v-if="!item.children && !item.outsideHamburger && (!item.visible || item.visible())"
@@ -89,30 +89,36 @@
           >
             {{ item.title }}
           </VaButton>
-          <VaButtonDropdown
-            v-else
-            :stickToEdges="true"
-            size="large"
-            text-color="TextPrimary"
-            preset="secondary"
-            :label="item.title"
-            :icon="item.title ? undefined : item.icon"
-            :opened-icon="item.title ? undefined : item.icon"
-          >
-            <template v-for="child in item.children" :key="child.title">
-              <VaSidebarItem
-                v-if="!child.visible || child.visible()"
-                :to="child.command ? undefined : child.to"
-                @click="child.command ? child.command() : undefined"
-                @keydown.enter="child.command ? child.command() : undefined"
+          <VaDropdown v-else :stickToEdges="true">
+            <template #anchor>
+              <VaButton
+                size="large"
+                text-color="TextPrimary"
+                preset="secondary"
+                :icon="item.title ? undefined : item.icon"
+                :icon-right="item.title ? 'va-arrow-down' : undefined"
+                :opened-icon="item.title ? undefined : item.icon"
               >
-                <VaSidebarItemContent>
-                  <VaIcon :name="child.icon" />
-                  <VaSidebarItemTitle>{{ child.title }}</VaSidebarItemTitle>
-                </VaSidebarItemContent>
-              </VaSidebarItem>
+                {{ item.title }}
+              </VaButton>
             </template>
-          </VaButtonDropdown>
+
+            <VaDropdownContent class="w-64">
+              <template v-for="child in item.children" :key="child.title">
+                <VaSidebarItem
+                  v-if="!child.visible || child.visible()"
+                  :to="child.command ? undefined : child.to"
+                  @click="child.command ? child.command() : undefined"
+                  @keydown.enter="child.command ? child.command() : undefined"
+                >
+                  <VaSidebarItemContent>
+                    <VaIcon :name="child.icon" />
+                    <VaSidebarItemTitle>{{ child.title }}</VaSidebarItemTitle>
+                  </VaSidebarItemContent>
+                </VaSidebarItem>
+              </template>
+            </VaDropdownContent>
+          </VaDropdown>
         </VaNavbarItem>
       </template>
       <VaNavbarItem>
