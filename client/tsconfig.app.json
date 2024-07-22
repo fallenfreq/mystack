@@ -3,6 +3,7 @@
   "include": [
     "cssVariables.js",
     "vuestic.config.js",
+    "tailwind.config.js",
     "env.d.ts",
     "src/**/*",
     "src/**/*.vue",
