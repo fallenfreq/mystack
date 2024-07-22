@@ -35,7 +35,21 @@ export default {
     "--body-bg-color": "255 255 255",
     "--text-color": "24 24 27",
     "--border-color": "228 228 231",
-    "--section-gap": "160px"
+    "--section-gap": "160px",
+    "--secondary": "129 137 146",
+    "--success": "102 190 51",
+    "--info": "62 170 248",
+    "--danger": "243 64 48",
+    "--warning": "255 217 82",
+    "--backgroundPrimary": "5 10 16",
+    "--backgroundSecondary": "31 38 47",
+    "--backgroundElement": "19 26 34",
+    "--backgroundBorder": "61 76 88",
+    "--textPrimary": "241 241 241",
+    "--textInverted": "11 18 26",
+    "--shadow": "0 0 0",
+    "--shadow-opacity": "0.12",
+    "--focus": "52 211 153"
   },
   "dark": {
     "--primary": "52 211 153",
@@ -47,6 +61,17 @@ export default {
     "--primary-highlight-hover-opacity": "0.3",
     "--body-bg-color": "39 39 42",
     "--text-color": "255 255 255",
-    "--border-color": "63 63 70"
+    "--border-color": "63 63 70",
+    "--secondary": "129 137 146",
+    "--success": "102 190 51",
+    "--info": "62 170 248",
+    "--danger": "243 64 48",
+    "--warning": "255 217 82",
+    "--backgroundPrimary": "5 10 16",
+    "--backgroundSecondary": "31 38 47",
+    "--backgroundElement": "19 26 34",
+    "--backgroundBorder": "61 76 88",
+    "--textPrimary": "241 241 241",
+    "--textInverted": "11 18 26"
   }
 }
