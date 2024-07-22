@@ -24,6 +24,7 @@
           <VaDropdownContent class="w-64">
             <template v-for="item in items" :key="item.title">
               <VaSidebarItem
+                :active="route.path === item.to"
                 v-if="!item.children && !item.outsideHamburger && (!item.visible || item.visible())"
                 :to="item.command ? undefined : item.to"
                 @click="item.command ? item.command() : undefined"
@@ -38,7 +39,9 @@
               <VaAccordion v-else-if="!item.outsideHamburger && (!item.visible || item.visible())">
                 <VaCollapse body-color="BackgroundElement">
                   <template #header="{ value: isCollapsed }">
-                    <VaSidebarItem>
+                    <VaSidebarItem
+                      :active="item.children?.some((child) => child.to === route.path)"
+                    >
                       <VaSidebarItemContent>
                         <VaIcon :name="item.icon" />
                         <VaSidebarItemTitle>{{ item.title }}</VaSidebarItemTitle>
@@ -50,6 +53,7 @@
                   <template #body>
                     <template v-for="child in item.children">
                       <VaSidebarItem
+                        :active="route.path === child.to"
                         v-if="!child.visible || child.visible()"
                         :key="child.title"
                         :to="child.command ? undefined : child.to"
@@ -84,16 +88,21 @@
             @click="item.command ? item.command() : undefined"
             @keydown.enter="item.command ? item.command() : undefined"
             size="large"
-            text-color="TextPrimary"
+            :text-color="route.path === item.to ? 'Primary' : 'TextPrimary'"
             preset="secondary"
           >
             {{ item.title }}
           </VaButton>
+
           <VaDropdown v-else :stickToEdges="true">
             <template #anchor>
               <VaButton
                 size="large"
-                text-color="TextPrimary"
+                :text-color="
+                  item.children?.some((child) => child.to === route.path)
+                    ? 'Primary'
+                    : 'TextPrimary'
+                "
                 preset="secondary"
                 :icon="item.title ? undefined : item.icon"
                 :icon-right="item.title ? 'va-arrow-down' : undefined"
@@ -106,6 +115,7 @@
             <VaDropdownContent class="w-64">
               <template v-for="child in item.children" :key="child.title">
                 <VaSidebarItem
+                  :active="route.path === child.to"
                   v-if="!child.visible || child.visible()"
                   :to="child.command ? undefined : child.to"
                   @click="child.command ? child.command() : undefined"
@@ -131,6 +141,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import zitadelAuth from '@/services/zitadelAuth'
+import { useRoute } from 'vue-router'
 
 interface MenuItem {
   title?: string
@@ -142,9 +153,11 @@ interface MenuItem {
   outsideHamburger?: boolean
 }
 
+const route = useRoute()
+
 const items = ref<MenuItem[]>([
   { title: 'Home', icon: 'home', to: '/' },
-  { title: 'About', icon: 'info', to: 'about' },
+  { title: 'About', icon: 'info', to: '/about' },
   {
     title: 'Demos',
     icon: 'dashboard',
@@ -152,19 +165,19 @@ const items = ref<MenuItem[]>([
       {
         title: 'Vuestic',
         icon: 'view_comfy',
-        to: 'vuestic-demo'
+        to: '/vuestic-demo'
       },
       {
         title: 'Primevue',
         icon: 'view_comfy',
-        to: 'primevue-demo'
+        to: '/primevue-demo'
       }
     ]
   },
   {
     title: 'Login',
     icon: 'person',
-    to: 'login',
+    to: '/login',
     visible: () => !zitadelAuth.oidcAuth.isAuthenticated,
     outsideHamburger: true
   },
@@ -177,13 +190,13 @@ const items = ref<MenuItem[]>([
       {
         icon: 'account_circle',
         title: 'Profile',
-        to: 'profile',
+        to: '/profile',
         visible: () => zitadelAuth.oidcAuth.isAuthenticated
       },
       {
         title: 'Admin',
         icon: 'settings',
-        to: 'admin',
+        to: '/admin',
         visible: () => {
           console.log(zitadelAuth.hasRole('admin'))
           return zitadelAuth.hasRole('admin')
