@@ -62,7 +62,8 @@ const processedRootColors = processTailwindConfigColors(
 const processedDarkColors = processTailwindConfigColors(customColours, 'dark')
 
 export default {
-  // These seem to be the default values and the defaults in Tailwind
+  // These are the Vuestic default values and the defaults in Tailwind
+  // if these are changed in Tailwind, they should be updated here too
   breakpoints: {
     thresholds: {
       sm: 640,
