@@ -35,14 +35,14 @@ export default {
         name: 'mi-{icon}',
         resolve: ({ icon }) => ({
           content: icon,
-          class: 'material-icons'
+          class: 'material-symbols-rounded'
         })
       },
       {
         name: '{icon}',
         resolve: ({ icon }) => ({
           content: icon,
-          class: 'material-symbols-outlined'
+          class: 'material-symbols-rounded'
         })
       }
     ]
