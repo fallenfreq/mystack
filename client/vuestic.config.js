@@ -1,5 +1,3 @@
-// TODO: This file has grown larger than planned and need to be broken up into smaller files
-// TODO: Need to create the other colour variables and set them in the appropriate presets
 import cssVariables from './cssVariables'
 import { createIconsConfig } from 'vuestic-ui'
 // Import the Tailwind CSS configuration
@@ -9,11 +7,6 @@ import resolveConfig from 'tailwindcss/resolveConfig'
 import tailwindConfig from './tailwind.config'
 const customColours = tailwindConfig.theme.extend.colors
 const defaultColors = resolveConfig({}).theme.colors
-
-const getColour = (name, preset) => {
-  const rgb = cssVariables[preset]?.['--' + name]
-  return rgb ? `rgb(${rgb.replace(new RegExp(' ', 'g'), ', ')})` : undefined
-}
 
 const processTailwindConfigColors = (colors, preset) => {
   const flattenColors = (obj, prefix = '') => {
@@ -124,37 +117,9 @@ export default {
   colors: {
     presets: {
       light: {
-        // primary: getColour('primary', 'root') || '#2c82e0',
-        secondary: '#666E75',
-        success: '#3D9209',
-        info: '#158DE3',
-        danger: '#E42222',
-        warning: '#FFD43A',
-        backgroundPrimary: '#FFFFFF',
-        backgroundSecondary: '#F8F9FA',
-        backgroundElement: '#ECF0F1',
-        backgroundBorder: '#DEE5F2',
-        textPrimary: '#262824',
-        textInverted: '#FFFFFF',
-        shadow: 'rgba(0, 0, 0, 0.12)',
-        focus: getColour('primary', 'root') || '#49A8FF',
         ...processedRootColors
       },
       dark: {
-        // primary: getColour('primary', 'dark') || '#3472F0',
-        secondary: '#818992',
-        success: '#66BE33',
-        info: '#3EAAF8',
-        danger: '#F34030',
-        warning: '#FFD952',
-        backgroundPrimary: '#050A10',
-        backgroundSecondary: '#1F262F',
-        backgroundElement: '#131A22',
-        backgroundBorder: '#3D4C58',
-        textPrimary: '#F1F1F1',
-        textInverted: '#0B121A',
-        shadow: 'rgba(0, 0, 0, 0.12)',
-        focus: getColour('primary', 'root') || '#49A8FF',
         ...processedRootColors,
         ...processedDarkColors
       }

@@ -50,7 +50,20 @@ export default {
           800: 'rgb(var(--surface-800))',
           900: 'rgb(var(--surface-900))',
           950: 'rgb(var(--surface-950))'
-        }
+        },
+        secondary: 'rgb(var(--secondary))',
+        success: 'rgb(var(--success))',
+        info: 'rgb(var(--info))',
+        danger: 'rgb(var(--danger))',
+        warning: 'rgb(var(--warning))',
+        backgroundPrimary: 'rgb(var(--backgroundPrimary))',
+        backgroundSecondary: 'rgb(var(--backgroundSecondary))',
+        backgroundElement: 'rgb(var(--backgroundElement))',
+        backgroundBorder: 'rgb(var(--backgroundBorder))',
+        textPrimary: 'rgb(var(--textPrimary))',
+        textInverted: 'rgb(var(--textInverted))',
+        shadow: 'rgb(var(--shadow)/var(--shadow-opacity))',
+        focus: 'rgb(var(--focus))'
       }
     }
   },

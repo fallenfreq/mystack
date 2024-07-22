@@ -1,3 +1,9 @@
+/*
+If this file is changed, the dev server needs to be restarted for 
+./plugins/extractCssVars.ts to re-calcualte the cssVariables.js file.
+You can just save a file that will trigger a restart.
+*/
+
 /* css by primevue */
 :root {
   --primary-50: 236 253 245;
@@ -77,8 +83,38 @@
 }
 
 /*
-Vuestic injects it's variables after main.css
-use the colours config to set the colours for Vuestic
-https://ui.vuestic.dev/styles/colors
-https://ui.vuestic.dev/services/colors-config
+Vuestic presests as vars.
+The var primary which is a Vuestic colour is already set by PrimeVue.
+We are passing Vustic it's colours by processing the Tailwind colours
+and using the cssVariables.js file to resolve the variables.
 */
+:root {
+  --secondary: 129 137 146;
+  --success: 102 190 51;
+  --info: 62 170 248;
+  --danger: 243 64 48;
+  --warning: 255 217 82;
+  --backgroundPrimary: 5 10 16;
+  --backgroundSecondary: 31 38 47;
+  --backgroundElement: 19 26 34;
+  --backgroundBorder: 61 76 88;
+  --textPrimary: 241 241 241;
+  --textInverted: 11 18 26;
+  --shadow: 0 0 0;
+  --shadow-opacity: 0.12;
+  --focus: var(--primary);
+}
+
+.dark {
+  --secondary: 129 137 146;
+  --success: 102 190 51;
+  --info: 62 170 248;
+  --danger: 243 64 48;
+  --warning: 255 217 82;
+  --backgroundPrimary: 5 10 16;
+  --backgroundSecondary: 31 38 47;
+  --backgroundElement: 19 26 34;
+  --backgroundBorder: 61 76 88;
+  --textPrimary: 241 241 241;
+  --textInverted: 11 18 26;
+}
