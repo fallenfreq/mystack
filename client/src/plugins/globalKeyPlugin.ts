@@ -28,11 +28,6 @@ const globalKeyPlugin: Plugin = {
     app.config.globalProperties.$removeKeyCombo = removeKeyCombo
 
     window.addEventListener('keydown', handleKeydown)
-    app.mixin({
-      beforeUnmount() {
-        window.removeEventListener('keydown', handleKeydown)
-      }
-    })
   }
 }
 

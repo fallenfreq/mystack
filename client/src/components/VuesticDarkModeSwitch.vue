@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import { type Ref, ref, onMounted, onBeforeUnmount, getCurrentInstance } from 'vue'
+import { type Ref, ref, onMounted, getCurrentInstance } from 'vue'
 import { useColors, useGlobalConfig } from 'vuestic-ui'
 const { applyPreset, currentPresetName } = useColors()
 
@@ -70,11 +70,7 @@ const instance = getCurrentInstance()
 
 onMounted(() => {
   // Register the key combo and function
+  console.log('Mounting dark mode switch')
   instance?.proxy?.$addKeyCombo('Cmd+k', myFunction)
-})
-
-onBeforeUnmount(() => {
-  // Clean up the key combo when the component is unmounted
-  instance?.proxy?.$removeKeyCombo('Cmd+k')
 })
 </script>
