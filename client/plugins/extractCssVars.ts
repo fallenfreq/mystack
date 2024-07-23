@@ -43,11 +43,12 @@ const run = async (cssFilePath: string, saveLocation: string) => {
   })
   const darkVariables = extraxtVars('.dark', cssAst)
   const rootVariables = extraxtVars(':root', cssAst)
-  const lookupVariables = { ...rootVariables, ...darkVariables }
+  const pinkVariables = extraxtVars('.pink', cssAst)
 
   const jsonContent = {
-    root: resolveAllVars(rootVariables, lookupVariables),
-    dark: resolveAllVars(darkVariables, lookupVariables)
+    root: resolveAllVars(rootVariables, rootVariables),
+    dark: resolveAllVars(darkVariables, { ...rootVariables, ...darkVariables }),
+    pink: resolveAllVars(pinkVariables, { ...rootVariables, ...pinkVariables })
   }
 
   fs.writeFileSync(

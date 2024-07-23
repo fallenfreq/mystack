@@ -39,9 +39,6 @@ You can just save a file that will trigger a restart.
   --primary-highlight-inverse: var(--primary-700);
   --primary-highlight-hover-opacity: 0.2;
 
-  --body-bg-color: var(--surface-0);
-  --text-color: var(--surface-900);
-  --border-color: var(--surface-200);
   --section-gap: 160px;
 }
 .dark {
@@ -53,10 +50,6 @@ You can just save a file that will trigger a restart.
   --primary-highlight-opacity: 0.2;
   --primary-highlight-inverse: var(--surface-0);
   --primary-highlight-hover-opacity: 0.3;
-
-  --body-bg-color: var(--surface-800);
-  --text-color: var(--surface-0);
-  --border-color: var(--surface-700);
 }
 
 .customized-primary {
@@ -118,5 +111,54 @@ and using the cssVariables.js file to resolve the variables.
   --backgroundBorder: 61 76 88;
   --textPrimary: 241 241 241;
   --textInverted: 11 18 26;
+  --focus: var(--primary);
+}
+
+/* Secret pink mode test colours. Press cmd+k to toggle */
+
+.pink {
+  --primary-50: 255 230 242;
+  --primary-100: 255 204 230;
+  --primary-200: 255 179 218;
+  --primary-300: 255 153 204;
+  --primary-400: 255 128 191;
+  --primary-500: 255 102 178;
+  --primary-600: 255 77 166;
+  --primary-700: 255 51 153;
+  --primary-800: 255 26 140;
+  --primary-900: 255 0 128;
+  --primary-950: 230 0 115;
+  --surface-0: 255 240 245;
+  --surface-50: 255 230 240;
+  --surface-100: 255 220 235;
+  --surface-200: 255 210 230;
+  --surface-300: 255 200 225;
+  --surface-400: 255 180 215;
+  --surface-500: 255 160 205;
+  --surface-600: 255 140 195;
+  --surface-700: 255 120 185;
+  --surface-800: 255 100 175;
+  --surface-900: 255 80 165;
+  --surface-950: 255 60 155;
+  --secondary: 204 153 255;
+  --success: 153 204 255;
+  --info: 153 255 255;
+  --danger: 255 153 204;
+  --warning: 255 255 153;
+  --backgroundPrimary: 255 240 245;
+  --backgroundSecondary: 255 230 240;
+  --backgroundElement: 255 220 235;
+  --backgroundBorder: 255 210 230;
+  --textPrimary: 102 0 51;
+  --textInverted: 255 230 240;
+  --primary: var(--primary-500);
+  --primary-inverse: var(--surface-0);
+  --primary-hover: var(--primary-600);
+  --primary-active-color: var(--primary-600);
+
+  --primary-highlight-opacity: 0.1;
+  --primary-highlight-inverse: var(--primary-700);
+  --primary-highlight-hover-opacity: 0.2;
+
   --focus: var(--primary);
 }

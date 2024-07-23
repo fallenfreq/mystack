@@ -8,12 +8,16 @@
 *,
 *::before,
 *::after {
-  border-color: rgb(var(--border-color));
+  border-color: rgb(var(--backgroundBorder));
+}
+
+*:focus-visible {
+  outline: 2px solid rgb(var(--focus));
 }
 
 body {
-  background-color: rgb(var(--body-bg-color));
-  color: rgb(var(--text-color));
+  background-color: rgb(var(--backgroundPrimary));
+  color: rgb(var(--textPrimary));
   min-height: 100vh;
   transition:
     color 0.5s,
