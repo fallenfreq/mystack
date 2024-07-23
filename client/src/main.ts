@@ -25,10 +25,13 @@ declare module 'vue' {
   }
 }
 
+import globalKeyPlugin from './plugins/globalKeyPlugin'
+
 zitadelAuth.oidcAuth.startup().then((ok: boolean) => {
   if (ok) {
     const app = createApp(App)
     app.config.globalProperties.$zitadel = zitadelAuth
+    app.use(globalKeyPlugin)
     app.use(router)
     app.use(vuestic)
     app.use(PrimeVue, {

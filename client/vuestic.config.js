@@ -59,7 +59,6 @@ const processedRootColors = processTailwindConfigColors(
   { ...defaultColors, ...customColours },
   'root'
 )
-const processedDarkColors = processTailwindConfigColors(customColours, 'dark')
 
 export default {
   // These are the Vuestic default values and the defaults in Tailwind
@@ -122,7 +121,11 @@ export default {
       },
       dark: {
         ...processedRootColors,
-        ...processedDarkColors
+        ...processTailwindConfigColors(customColours, 'dark')
+      },
+      pink: {
+        ...processedRootColors,
+        ...processTailwindConfigColors(customColours, 'pink')
       }
     },
     // colors.variables is a shorcut for colors.presets[currentPresetName].
