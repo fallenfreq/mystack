@@ -28,7 +28,14 @@ Create a copy of any `.example` files and fill them in, removing the `.example` 
 
 ### Docker
 
-Run `docker-compose up` to start Zitadel, the necessary databases, and the API, which also serves the Vue 3 client. Docker is intended as an option for deploying the API and sits behind Nginx as a reverse proxy. Zitadel is always started as a container and has its own network, including Nginx, databases, etc. Zitadel needs to be running for the login button to work.
+Run `docker-compose up` to start Zitadel, the necessary databases, and the API, which also serves the Vue 3 client. Docker is intended as an option for deploying the API and sits behind Nginx as a reverse proxy. Zitadel is always started as a container and has its own network, including Nginx, databases, etc.
+
+### Authentication
+
+Zitadel needs to be running for the login button to work.
+You'll also need to login to the Zitadel console, create a Vue app to login to and add the appropriate .env vars to the client .env file. You can see more information on how to login to a single page application with Zitadel [here](https://zitadel.com/docs/examples/login/vue).
+
+API authentication still needs to be added to protect tRPC routes.
 
 ### tRPC Endpoints
 
