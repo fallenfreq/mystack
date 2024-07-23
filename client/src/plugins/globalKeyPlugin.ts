@@ -1,4 +1,5 @@
 import type { App, Plugin } from 'vue'
+import { AddKeyCombo, RemoveKeyCombo } from '@/symbols'
 
 interface KeyFunctionMap {
   [key: string]: () => void
@@ -24,9 +25,8 @@ const removeKeyCombo = (keyCombo: string): void => {
 
 const globalKeyPlugin: Plugin = {
   install(app: App) {
-    app.config.globalProperties.$addKeyCombo = addKeyCombo
-    app.config.globalProperties.$removeKeyCombo = removeKeyCombo
-
+    app.provide(AddKeyCombo, addKeyCombo)
+    app.provide(RemoveKeyCombo, removeKeyCombo)
     window.addEventListener('keydown', handleKeydown)
   }
 }

@@ -16,8 +16,10 @@
 </template>
 
 <script setup lang="ts">
-import { type Ref, ref, onMounted, getCurrentInstance } from 'vue'
+import { ref, onMounted, inject } from 'vue'
+import type { Ref } from 'vue'
 import { useColors, useGlobalConfig } from 'vuestic-ui'
+import { AddKeyCombo } from '@/symbols'
 const { applyPreset, currentPresetName } = useColors()
 
 const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary')
@@ -66,11 +68,10 @@ function myFunction(): void {
   }
 }
 
-const instance = getCurrentInstance()
-
 onMounted(() => {
   // Register the key combo and function
   console.log('Mounting dark mode switch')
-  instance?.proxy?.$addKeyCombo('Cmd+k', myFunction)
+  const addKeyCombo = inject(AddKeyCombo)
+  addKeyCombo?.('Cmd+k', myFunction)
 })
 </script>
