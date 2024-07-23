@@ -36,17 +36,17 @@ export default {
     "--text-color": "24 24 27",
     "--border-color": "228 228 231",
     "--section-gap": "160px",
-    "--secondary": "129 137 146",
-    "--success": "102 190 51",
-    "--info": "62 170 248",
-    "--danger": "243 64 48",
-    "--warning": "255 217 82",
-    "--backgroundPrimary": "5 10 16",
-    "--backgroundSecondary": "31 38 47",
-    "--backgroundElement": "19 26 34",
-    "--backgroundBorder": "61 76 88",
-    "--textPrimary": "241 241 241",
-    "--textInverted": "11 18 26",
+    "--secondary": "102 110 117",
+    "--success": "61 146 9",
+    "--info": "21 141 227",
+    "--danger": "228 34 34",
+    "--warning": "255 212 58",
+    "--backgroundPrimary": "255 255 255",
+    "--backgroundSecondary": "248 249 250",
+    "--backgroundElement": "236 240 241",
+    "--backgroundBorder": "222 229 242",
+    "--textPrimary": "38 40 36",
+    "--textInverted": "255 255 255",
     "--shadow": "0 0 0",
     "--shadow-opacity": "0.12",
     "--focus": "52 211 153"
@@ -72,6 +72,7 @@ export default {
     "--backgroundElement": "19 26 34",
     "--backgroundBorder": "61 76 88",
     "--textPrimary": "241 241 241",
-    "--textInverted": "11 18 26"
+    "--textInverted": "11 18 26",
+    "--focus": "52 211 153"
   }
 }
