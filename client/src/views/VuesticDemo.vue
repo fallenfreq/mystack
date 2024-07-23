@@ -122,7 +122,7 @@ const form = reactive({
   lastName: '',
   country: '',
   birthDate: null as Date | null,
-  time: null as Date | null,
+  time: undefined as Date | undefined,
   acknowledgement: false,
   notifications: true,
   paymentMethod: '',
