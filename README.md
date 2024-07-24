@@ -33,7 +33,23 @@ Run `docker-compose up` to start Zitadel, the necessary databases, and the API, 
 ### Authentication
 
 Zitadel needs to be running for the login button to work.
-You'll also need to login to the Zitadel console, create a Vue app to login to, create an API app for the api to do token inspection and add the appropriate .env vars to the client and api .env files.
+You'll also need to login to the Zitadel console, create a Vue app to login to, create an API app for the API to do token inspection and add the appropriate `.env` vars to the client and API `.env` files.
+
+#### Create Login App
+
+- Go to`https://localhost:4443`
+- Create a project and save the Resource ID as `VITE_API_PROJECT_RESOURCE_ID` in the client `.env` file
+- Add a new application and select User Agent then PKCE for an SPA
+- Add `https://localhost/auth/signinwin/zitadel` and `https://localhost:5173/auth/signinwin/zitadel` as Redirct URIs
+- Add `https://localhost:5173/` and `https://localhost/` as Post Logout URIs
+- Save the CLient ID as `VITE_API_CLIENT_ID` in the client `.env`
+
+#### Create Token Inspection App
+
+- Go to`https://localhost:4443`
+- Go to your previously created project
+- Add a new application and select API then Basic for the tRPC API
+- Save the client id and client secret as `ZITADEL_CLIENT_ID` and `ZITADEL_CLIENT_SECRET` in the api `.env` file
 
 You can see more information on how to login to a single page application with Zitadel [here](https://zitadel.com/docs/examples/login/vue).
 
