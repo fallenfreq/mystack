@@ -1,6 +1,15 @@
 import { TRPCError, initTRPC } from '@trpc/server'
 import type { CreateMyServerContextOptions } from './trpcAdapter.js'
 import superjson from 'superjson'
+import axios from 'axios'
+import { envVars } from './config.js'
+import https from 'https'
+import fs from 'fs'
+
+import path from 'path'
+import { fileURLToPath } from 'url'
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 const createContext: (
   opts: CreateMyServerContextOptions
@@ -27,19 +36,48 @@ const t = initTRPC.context<Context>().create({
  * that can be used throughout the router
  */
 
-const secure = t.middleware(({ next, ctx }) => {
-  if (ctx.req.method == 'PUT') {
+const secure = t.middleware(async ({ next, ctx }) => {
+  const authHeader = ctx.req.headers.authorization
+  if (!authHeader) {
     throw new TRPCError({
-      code: 'UNAUTHORIZED'
+      code: 'UNAUTHORIZED',
+      message: 'No authorization header provided'
     })
   }
 
-  return next({
-    ctx: {
-      // update or add ctx props
-      secure: true
+  const token = authHeader.split(' ')[1]
+  try {
+    const response = await axios.post(envVars.ZITADEL_INTROSPECTION_ENDPOINT, `token=${token}`, {
+      httpsAgent: new https.Agent({
+        ca: fs.readFileSync(
+          path.join(__dirname, '../../../../certs/certificate_authority/devca.pem')
+        )
+      }),
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      auth: {
+        username: envVars.ZITADEL_CLIENT_ID,
+        password: envVars.ZITADEL_CLIENT_SECRET
+      }
+    })
+
+    if (!response.data.active) {
+      throw new TRPCError({
+        code: 'FORBIDDEN',
+        message: 'Inactive token'
+      })
     }
-  })
+    return next({ ctx: { secure: true } })
+  } catch (error: any) {
+    const message = error.response ? error.response.data : error.message
+    console.error('Introspection error:', message)
+
+    throw new TRPCError({
+      code: 'INTERNAL_SERVER_ERROR',
+      message: `Failed to introspect token: ${message}`
+    })
+  }
 })
 
 const router = t.router

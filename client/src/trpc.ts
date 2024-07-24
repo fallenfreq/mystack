@@ -1,6 +1,7 @@
 import { httpBatchLink, createTRPCClient } from '@trpc/client'
 // to remove error A type annotation is necessary.ts(2742)
 import '@trpc/server'
+import zitadelAuth from '@/services/zitadelAuth'
 
 import type { AppRouter } from '@vue-app/api/appRouter'
 import superjson from 'superjson'
@@ -11,7 +12,12 @@ const trpc = createTRPCClient<AppRouter>({
   links: [
     httpBatchLink({
       transformer: superjson,
-      url: `http://${import.meta.env.VITE_HOST}:${import.meta.env.VITE_INTERNAL_PORT}/trpc`
+      url: `https://${import.meta.env.VITE_HOST}:${import.meta.env.VITE_API_PORT}/trpc`,
+      headers: () => {
+        return {
+          Authorization: 'Bearer ' + zitadelAuth.oidcAuth.accessToken
+        }
+      }
     })
   ]
 })

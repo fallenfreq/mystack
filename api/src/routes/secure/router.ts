@@ -1,10 +1,10 @@
 import { secureProcedure, router } from '../../config/trpc.js'
+import { z } from 'zod'
 
 const secureRouter = router({
-  // https://localhost/trpc/secure.test
-  test: secureProcedure.query(async (opt) => {
+  test: secureProcedure.input(z.string()).query(async (opt) => {
     console.log('opt.input:', opt.input)
-    return opt.ctx.secure
+    return { secure: opt.ctx.secure, input: opt.input }
   })
 })
 
