@@ -114,7 +114,3 @@ There's currently a dark mode, light mode and secret pink mode, press cmd+k to t
 ## Contributions
 
 We welcome contributions! Please feel free to fork this repository and submit pull requests. Make sure to follow the established coding standards and conventions.
-
-```
-
-```
