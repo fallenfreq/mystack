@@ -1,26 +1,36 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 import zitadelAuth from '@/services/zitadelAuth'
+import { trpc } from '../trpc'
+import axios from 'axios'
 
 const user = computed(() => zitadelAuth.oidcAuth.userProfile)
 
-import axios from 'axios'
-
-let config = {
-  method: 'GET',
-  maxBodyLength: Infinity,
-  url: `${import.meta.env.VITE_API_ISSUER}oidc/v1/userinfo`,
-  headers: {
-    'Content-Type': 'application/json',
-    Accept: 'application/json',
-    Authorization: 'Bearer ' + zitadelAuth.oidcAuth.accessToken
-  }
-}
-
+// This is just here temporarily to test calling a secured ZITADEL endpoint
 axios
-  .request(config)
+  .request({
+    method: 'GET',
+    maxBodyLength: Infinity,
+    url: `${import.meta.env.VITE_API_ISSUER}oidc/v1/userinfo`,
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: 'Bearer ' + zitadelAuth.oidcAuth.accessToken
+    }
+  })
   .then((response) => {
-    console.log('response.data', response.data)
+    console.log('Zitadel response.data', response.data)
+  })
+  .catch((error) => {
+    console.log(error)
+  })
+
+// This is just here temporarily to test calling a secure endpoint on our tRPC API
+// The endpoint just returns a secure property and echos the input
+trpc.secure.test
+  .query('Sending data to tRPC secure endpoint from Vue client')
+  .then((response) => {
+    console.log('tRPC secure response', response)
   })
   .catch((error) => {
     console.log(error)

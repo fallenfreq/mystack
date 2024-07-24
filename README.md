@@ -33,9 +33,11 @@ Run `docker-compose up` to start Zitadel, the necessary databases, and the API, 
 ### Authentication
 
 Zitadel needs to be running for the login button to work.
-You'll also need to login to the Zitadel console, create a Vue app to login to and add the appropriate .env vars to the client .env file. You can see more information on how to login to a single page application with Zitadel [here](https://zitadel.com/docs/examples/login/vue).
+You'll also need to login to the Zitadel console, create a Vue app to login to, create an API app for the api to do token inspection and add the appropriate .env vars to the client and api .env files.
 
-API authentication still needs to be added to protect tRPC routes.
+You can see more information on how to login to a single page application with Zitadel [here](https://zitadel.com/docs/examples/login/vue).
+
+You can see more information on how we secure the API routes with Zitadel via token inspection and how to set up the API app in Zitadel[here](https://zitadel.com/blog/testing-token-introspection-with-postman).
 
 ### tRPC Endpoints
 
