@@ -47,6 +47,19 @@ Prefix the tRPC endpoints with `/trpc`. Unprefixed URLs will serve the client an
 
 [https://localhost/trpc/echo?batch=1&input=%7B%220%22%3A%7B%22json%22%3A%7B%22name%22%3A%22from%20tRPC%22%7D%7D%7D](https://localhost/trpc/echo?batch=1&input=%7B%220%22%3A%7B%22json%22%3A%7B%22name%22%3A%22from%20tRPC%22%7D%7D%7D)
 
+Although there is no need to visit tRPC enpoints manually since you make queries using trpc instead of something like axios.
+
+```typescript
+trpc.secure.test
+  .query('Sending data to tRPC secure endpoint from Vue client')
+  .then((response) => {
+    console.log('tRPC secure response', response)
+  })
+  .catch((error) => {
+    console.log(error)
+  })
+```
+
 #### Example Vue Route:
 
 [https://localhost/vuestic-demo](https://localhost/vuestic-demo)
@@ -101,3 +114,7 @@ There's currently a dark mode, light mode and secret pink mode, press cmd+k to t
 ## Contributions
 
 We welcome contributions! Please feel free to fork this repository and submit pull requests. Make sure to follow the established coding standards and conventions.
+
+```
+
+```
