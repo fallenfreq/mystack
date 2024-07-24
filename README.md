@@ -20,7 +20,7 @@ This repository is a monorepo for a web application using a modern tech stack. I
 
 ### Certificates
 
-Ensure that `privkey.pem` and `fullchain.pem` certificates exist in the `./certs` directory. For development purposes, you can generate a certificate authority and self-signed certificates using the scripts provided in the `./certs` directory.
+Ensure that `privkey.pem` and `fullchain.pem` certificates exist in the `./certs` directory. For development purposes, you can generate a certificate authority and self-signed certificates using the scripts provided in the `./certs` directory. Dont forgot to let your OS or browser trust your CA file.
 
 ### Environment Variables
 
