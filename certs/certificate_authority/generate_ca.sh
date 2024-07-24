@@ -27,8 +27,7 @@ CA_KEY="./devca.key"
 ORGANISATION="dev"
 
 # generate key
-$OPENSSL_BIN genpkey -algorithm RSA -out "$CA_KEY" -pkeyopt rsa_keygen_bits:2048
-
+$OPENSSL_BIN genpkey -algorithm RSA -out "$CA_KEY" -pkeyopt rsa_keygen_bits:2048 \
 &&
 
 # Generate the CA certificate

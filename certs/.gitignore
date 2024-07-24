@@ -2,7 +2,7 @@ privkey.key
 privkey.pem
 fullchain.pem
 devca.key
-devcaa.pem
+devca.pem
 dev.crt
 dev.csr
 devca.srl
