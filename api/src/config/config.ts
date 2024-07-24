@@ -12,7 +12,8 @@ const envVars = z
     DB_PORT: z.string(),
     ZITADEL_CLIENT_ID: z.string(),
     ZITADEL_CLIENT_SECRET: z.string(),
-    ZITADEL_INTROSPECTION_ENDPOINT: z.string()
+    ZITADEL_INTROSPECTION_ENDPOINT: z.string(),
+    CA_PATH: z.string()
   })
   .parse(process.env)
 

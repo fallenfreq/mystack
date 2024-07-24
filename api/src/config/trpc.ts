@@ -6,11 +6,6 @@ import { envVars } from './config.js'
 import https from 'https'
 import fs from 'fs'
 
-import path from 'path'
-import { fileURLToPath } from 'url'
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
-
 const createContext: (
   opts: CreateMyServerContextOptions
 ) => Promise<CreateMyServerContextOptions> = async ({ req, res, info }) => {
@@ -48,11 +43,13 @@ const secure = t.middleware(async ({ next, ctx }) => {
   const token = authHeader.split(' ')[1]
   try {
     const response = await axios.post(envVars.ZITADEL_INTROSPECTION_ENDPOINT, `token=${token}`, {
-      httpsAgent: new https.Agent({
-        ca: fs.readFileSync(
-          path.join(__dirname, '../../../../certs/certificate_authority/devca.pem')
-        )
-      }),
+      ...(envVars.CA_PATH
+        ? {
+            httpsAgent: new https.Agent({
+              ca: fs.readFileSync(envVars.CA_PATH)
+            })
+          }
+        : {}),
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
