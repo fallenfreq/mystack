@@ -24,7 +24,7 @@ Ensure that `privkey.pem` and `fullchain.pem` certificates exist in the `./certs
 
 ### Environment Variables
 
-Create a copy of any `.example` files and fill them in, removing the `.example` extension. For example, `.env.example` becomes `.env`. The defaults in the .example are fine for testing out the project other than a few variables that are mention in the authentication section.
+Create a copy of any `.example` files and fill them in, removing the `.example` extension. For example, `.env.example` becomes `.env`. The defaults in the .example are fine for testing out the project other than a few variables that are mention in the authentication section. You may also want to fill out the SMTPConfiguration at `zitadel/zitadel-secrets.yaml` if you require email confirmation from users.
 
 ### Authentication
 
@@ -45,7 +45,7 @@ You'll also need to login to the Zitadel console, create a Vue app to login to, 
 - Go to`https://localhost:4443`
 - Go to your previously created project
 - Add a new application and select API then Basic for the tRPC API
-- Save the client id and client secret as `ZITADEL_CLIENT_ID` and `ZITADEL_CLIENT_SECRET` in the api `.env` file
+- Save the client ID and client secret as `ZITADEL_CLIENT_ID` and `ZITADEL_CLIENT_SECRET` in the api `.env` file
 
 You can see more information on how to login to a single page application with Zitadel [here](https://zitadel.com/docs/examples/login/vue).
 
