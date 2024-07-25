@@ -5,59 +5,74 @@ import { createIconsConfig } from 'vuestic-ui'
 // import defaultColors from 'tailwindcss/colors'
 import resolveConfig from 'tailwindcss/resolveConfig'
 import tailwindConfig from './tailwind.config'
-const customColours = tailwindConfig.theme.extend.colors
-const defaultColors = resolveConfig({}).theme.colors
+const customColours = (tailwindConfig?.theme?.extend?.colors || {}) as Record<string, string>
+const defaultColors = resolveConfig({ content: { files: [] } }).theme.colors
 
-const processTailwindConfigColors = (colors, preset) => {
-  const flattenColors = (obj, prefix = '') => {
-    return Object.keys(obj).reduce((acc, key) => {
-      const value = obj[key]
+type ColorValue = string
+type ColorObject = { [key: string]: ColorValue | ColorObject }
+type CssVariables = { [key: string]: { [key: string]: string } }
+
+const processTailwindConfigColors = (
+  colors: ColorObject,
+  preset: string,
+  cssVariables: CssVariables
+) => {
+  const flattenColors = (colorObject: ColorObject, prefix = ''): ColorObject => {
+    return Object.keys(colorObject).reduce((accumulator, key) => {
+      const colorValue = colorObject[key]
       const newPrefix = key === 'DEFAULT' ? prefix : `${prefix}${prefix ? '-' : ''}${key}`
 
-      if (typeof value === 'string') {
-        if (!value.startsWith('rgb') && !value.startsWith('#')) return acc
-        let resolvedValue = value
+      if (typeof colorValue === 'string') {
+        if (!colorValue.startsWith('rgb') && !colorValue.startsWith('#')) {
+          return accumulator
+        }
 
-        // Resolve variables
+        let resolvedValue = colorValue
+
+        // Resolve CSS variable references
         if (resolvedValue.includes('var(--')) {
-          const varMatches = resolvedValue.match(/var\(--(.*?)\)/g)
-          if (varMatches) {
-            for (const match of varMatches) {
-              const varName = match.replace(/var\(--(.*?)\)/, '$1')
-              const varValue = cssVariables[preset]?.[`--${varName}`]
-              if (varValue) {
-                resolvedValue = resolvedValue.replace(`var(--${varName})`, varValue)
-              } else return acc
+          const variableMatches = resolvedValue.match(/var\(--(.*?)\)/g)
+          if (variableMatches) {
+            for (const match of variableMatches) {
+              const variableName = match.replace(/var\(--(.*?)\)/, '$1')
+              const variableValue = cssVariables[preset]?.[`--${variableName}`]
+              if (variableValue) {
+                resolvedValue = resolvedValue.replace(`var(--${variableName})`, variableValue)
+              } else {
+                return accumulator
+              }
             }
           }
         }
 
-        // Add commas to rgb values since vuestic doesn't support the new syntax
+        // Replace spaces with commas in rgb values for compatibility
         if (resolvedValue.startsWith('rgb(')) {
           resolvedValue = resolvedValue.replace(/ /g, ', ')
         }
 
-        // Convert rgb to rgba syntax since vuestic doesn't support the new syntax
+        // Convert rgb to rgba syntax for compatibility
         if (resolvedValue.includes('/')) {
           const [rgbPart, opacityPart] = resolvedValue.split('/')
           const rgbaPart = rgbPart.replace('rgb', 'rgba')
           resolvedValue = `${rgbaPart.trim()}, ${opacityPart.trim()}`
         }
 
-        acc[newPrefix] = resolvedValue
-      } else if (typeof value === 'object') {
-        Object.assign(acc, flattenColors(value, newPrefix))
+        accumulator[newPrefix] = resolvedValue
+      } else if (typeof colorValue === 'object') {
+        Object.assign(accumulator, flattenColors(colorValue, newPrefix))
       }
-      return acc
-    }, {})
+
+      return accumulator
+    }, {} as ColorObject)
   }
 
-  return flattenColors(colors)
+  return flattenColors(colors) as Record<string, string>
 }
 
 const processedRootColors = processTailwindConfigColors(
   { ...defaultColors, ...customColours },
-  'root'
+  'root',
+  cssVariables
 )
 
 export default {
@@ -121,11 +136,11 @@ export default {
       },
       dark: {
         ...processedRootColors,
-        ...processTailwindConfigColors(customColours, 'dark')
+        ...processTailwindConfigColors(customColours, 'dark', cssVariables)
       },
       pink: {
         ...processedRootColors,
-        ...processTailwindConfigColors(customColours, 'pink')
+        ...processTailwindConfigColors(customColours, 'pink', cssVariables)
       }
     },
     // colors.variables is a shorcut for colors.presets[currentPresetName].
