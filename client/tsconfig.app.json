@@ -2,8 +2,8 @@
   "extends": "@vue/tsconfig/tsconfig.dom.json",
   "include": [
     "cssVariables.js",
-    "vuestic.config.js",
     "tailwind.config.js",
+    "vuestic.my.config.ts",
     "env.d.ts",
     "src/**/*",
     "src/**/*.vue",
