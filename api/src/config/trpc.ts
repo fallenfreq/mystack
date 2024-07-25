@@ -72,7 +72,8 @@ const secure = t.middleware(async ({ next, ctx }) => {
 
     throw new TRPCError({
       code: 'INTERNAL_SERVER_ERROR',
-      message: `Failed to introspect token: ${message}`
+      message: `Failed to introspect token: ${message}`,
+      cause: error
     })
   }
 })
