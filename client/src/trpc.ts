@@ -1,6 +1,4 @@
 import { httpBatchLink, createTRPCClient } from '@trpc/client'
-// to remove error A type annotation is necessary.ts(2742)
-import '@trpc/server'
 import zitadelAuth from '@/services/zitadelAuth'
 
 import type { AppRouter } from '@vue-app/api/appRouter'

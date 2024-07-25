@@ -16,7 +16,7 @@
     "@trpc/client": "11.0.0-rc.402",
     "@vue-app/api": "workspace:*",
     "@vuestic/tailwind": "^0.1.5",
-    "@zitadel/vue": "^1.0.3",
+    "@zitadel/vue": "^1.0.4",
     "npm": "^10.8.2",
     "postcss-safe-parser": "^7.0.0",
     "primeicons": "^7.0.0",
