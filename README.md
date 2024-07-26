@@ -22,7 +22,7 @@ This repository is a monorepo for a web application using a modern tech stack. I
 
 Ensure that `privkey.pem` and `fullchain.pem` certificates exist in the `./certs` directory. For development purposes, you can generate a certificate authority and self-signed certificates using the scripts provided in the `./certs` directory. Don’t forgot to let your OS or browser trust your CA file.
 
-The scripts use openssl and realpath. You might need to install openssl and coreutils (which includes realpath) if they are not already installed on your OS. Then, update the OPENSSL_BIN variable to the location of the binary for your version of OpenSSL.
+The scripts use openssl and realpath. You might need to install openssl and coreutils (which includes realpath) if they are not already installed on your OS. Then, update the OPENSSL_BIN variable inside the script files to the location of the binary for your version of OpenSSL.
 
 ### Environment Variables
 
