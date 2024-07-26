@@ -198,7 +198,6 @@ const items = ref<MenuItem[]>([
         icon: 'settings',
         to: '/admin',
         visible: () => {
-          console.log(zitadelAuth.hasRole('admin'))
           return zitadelAuth.hasRole('admin')
         }
       },
