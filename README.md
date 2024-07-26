@@ -22,6 +22,8 @@ This repository is a monorepo for a web application using a modern tech stack. I
 
 Ensure that `privkey.pem` and `fullchain.pem` certificates exist in the `./certs` directory. For development purposes, you can generate a certificate authority and self-signed certificates using the scripts provided in the `./certs` directory. Don’t forgot to let your OS or browser trust your CA file.
 
+The scripts use openssl and realpath. You might need to install openssl and coreutils (which includes realpath) if they are not already installed on your OS. Then, update the OPENSSL_BIN variable to the location of the binary for your version of OpenSSL.
+
 ### Environment Variables
 
 Create a copy of any `.example` files and fill them in, removing the `.example` extension. For example, `.env.example` becomes `.env`. The defaults in the .example are fine for testing out the project other than a few variables that are mention in the authentication section. You may also want to fill out the SMTPConfiguration at `zitadel/zitadel-secrets.yaml` if you require email confirmation from users.
