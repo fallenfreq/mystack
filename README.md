@@ -2,7 +2,9 @@
 
 ## Overview
 
-This repository is a monorepo for a web application using a modern tech stack. It includes:
+The project aims to provide a somewhat opinionated, comprehensive, nearly production-ready web application setup with everything needed for a modern application, including HTTPS, authentication, a component library, and more out of the box. The goal is to minimize setup time and streamline the development process, allowing developers to start working on application-specific code as quickly as possible. It selects type-safe tools that combine rich features with ease of use, enhancing development speed and reliability.
+
+It includes:
 
 - **TypeScript**
 - **Vue 3**
@@ -58,6 +60,10 @@ You can see more information on how we secure the API routes with Zitadel via to
 You connect to a PostgreSQL database using the variables in the API .env file. You can spin up a PostgreSQL database in a Docker continer with `pnpm db:api` that will use the same variables. Once you have a database, run `pnpm migrate:api` to generate the migrate files and `pnpm migrate:api:push` to push them to the database. You'll also need to do this when you change the `api/src/schemas` files.
 
 ## Development Commands
+
+We are using PNPM to make this a monorepo with PNPM workspaces. Corepack is required for the `packageManager` field in the `package.json` to be acknowladged. It may or may not have been included with your install of Node.js. Corepack also needs enabling by running `corepack enable`
+
+More information can be found on Corepack [here](https://nodejs.org/api/corepack.html)
 
 - **Start Zitadel:** `pnpm docker:up:zitadel`
 - **Start Development Database:** `pnpm db:api`
