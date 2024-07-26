@@ -5,12 +5,13 @@ import { createIconsConfig } from 'vuestic-ui'
 // import defaultColors from 'tailwindcss/colors'
 import resolveConfig from 'tailwindcss/resolveConfig'
 import tailwindConfig from './tailwind.config'
-const customColours = (tailwindConfig?.theme?.extend?.colors || {}) as Record<string, string>
-const defaultColors = resolveConfig({ content: { files: [] } }).theme.colors
 
 type ColorValue = string
 type ColorObject = { [key: string]: ColorValue | ColorObject }
 type CssVariables = { [key: string]: { [key: string]: string } }
+
+const customColors = (tailwindConfig?.theme?.extend?.colors || {}) as ColorObject
+const defaultColors = resolveConfig({ content: { files: [] } }).theme.colors
 
 const processTailwindConfigColors = (
   colors: ColorObject,
@@ -70,7 +71,7 @@ const processTailwindConfigColors = (
 }
 
 const processedRootColors = processTailwindConfigColors(
-  { ...defaultColors, ...customColours },
+  { ...defaultColors, ...customColors },
   'root',
   cssVariables
 )
@@ -136,11 +137,11 @@ export default {
       },
       dark: {
         ...processedRootColors,
-        ...processTailwindConfigColors(customColours, 'dark', cssVariables)
+        ...processTailwindConfigColors(customColors, 'dark', cssVariables)
       },
       pink: {
         ...processedRootColors,
-        ...processTailwindConfigColors(customColours, 'pink', cssVariables)
+        ...processTailwindConfigColors(customColors, 'pink', cssVariables)
       }
     },
     // colors.variables is a shorcut for colors.presets[currentPresetName].
